@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>(guile gtk): docs: guile-gobject: defs-support</title>
+  <style type="text/css"><!--
+  /* bad netscape four, no stylesheet for you */
+  @import url(../../../base.css);
+  --></style>
+ </head>
+ <body>
+  <div id="body">
+   <div id="heading">
+
+    <h1>(guile gtk)</h1>
+    <div id="menu-bar" class="reversed"><a href="../../../">top</a> <a  href="../../../docs/">documentation</a> <a  href="../../../download/">download</a> <a  href="../../../dev/">developers</a> <a  href="../../../contact/">contact</a> <a  href="../../../links/">links</a></div>
+
+   </div>
+   <div id="text">
+
+    <h2>(help (gnome gobject defs-support))</h2>
+
+    <p>
+     The <code>(gnome gobject defs-support)</code> module defines a function,
+     <code>load-defs</code>, that creates an environment to natively
+     <em>evaluate</em> the <code>.defs</code> files. The defined types and
+     functions are then wrapped by g-wrap.
+    </p>
+
+    <p>
+     As an example, Atk is wrapped with the following code, from
+     <code>gnome/gtk/gw-atk-spec.scm</code>:
+    </p>
+
+<pre>
+;; wrap atk
+
+;; this wrapper-generation-spec module will actually be installed, along
+;; with the defs, so that other wrappers which use Atk types (such as
+;; Gtk) can have them available
+(define-module (gnome gtk gw-atk-spec)
+  :use-module (g-wrap)
+  ;; support for GObject, GValue, GType; in turn, this module uses
+  ;; gw-glib-spec, which wraps gint, gint32, and the like...
+  :use-module (gnome gobject gw-gobject-spec)
+  ;; this module provides `load-defs'
+  :use-module (gnome gobject defs-support))
+
+;; we use the newest development g-wrap to do the work for us.
+(let ((ws (gw:new-wrapset "guile-gnome-gw-atk")))
+
+  (gw:wrapset-set-guile-module! ws '(gnome gtk gw-atk))
+
+  ;; make the types from the following wrapsets available to us...
+  (gw:wrapset-depends-on ws "guile-gnome-gw-standard")
+  (gw:wrapset-depends-on ws "guile-gnome-gw-glib")
+  (gw:wrapset-depends-on ws "guile-gnome-gw-gobject")
+
+  ;; add some headers to the generated c file...
+  (gw:wrapset-add-cs-declarations!
+   ws
+   (lambda (wrapset client-wrapset)
+     (if (eq? client-wrapset wrapset)
+         '()
+         (list
+          "#include &lt;atk/atk.h&gt;\n"
+          "#include &lt;atk/atk-enum-types.h&gt;\n"))))
+
+  ;; manually wrap AtkState as a 64 bit int
+  (register-type "guile-gnome-gw-atk" "AtkState" '&lt;gw:long-long&gt;)
+
+  ;; then we're finished :-)
+  (load-defs ws "atk.defs"))
+</pre>
+
+    <p>
+     See <code>gnome/gtk/Makefile.am</code> to see how the wrapper is actually
+     produced. More examples can be found within the distribution and in the
+     <code>gst-guile</code> project.
+    </p>
+
+    <p>
+     That's it for the docs. They're not quite adequate -- want to write some
+     more? <a href="../../../contact/">Contact us</a>!
+    </p>
+   </div>
+   <div id="footer">
+    $Date: 2003/08/04 16:25:23 $
+   </div>
+  </div>
+ </body>
+</html>

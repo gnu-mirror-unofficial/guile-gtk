@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>(guile gtk): docs: guile-gobject: gobject</title>
+  <style type="text/css"><!--
+  /* bad netscape four, no stylesheet for you */
+  @import url(../../../base.css);
+  --></style>
+ </head>
+ <body>
+  <div id="body">
+   <div id="heading">
+
+    <h1>(guile gtk)</h1>
+    <div id="menu-bar" class="reversed"><a href="../../../">top</a> <a  href="../../../docs/">documentation</a> <a  href="../../../download/">download</a> <a  href="../../../dev/">developers</a> <a  href="../../../contact/">contact</a> <a  href="../../../links/">links</a></div>
+
+   </div>
+   <div id="text">
+
+    <h2>(help (gnome gobject))</h2>
+
+    <h3><a name="gtype">The GLib type system</a></h3>
+    <p>
+     GLib includes a runtime library, <code>libgobject</code>, that implements a
+     runtime, dynamic type system within a compiled, statically-typed language:
+     C. One of its main design goals is to increase the ease with which C code
+     can be wrapped by interpreted languages. This wrapper is implemented in
+     guile by the module <code>(gnome gobject)</code>. This section gives a
+     brief introduction to <code>libgobject</code>, and how its features are
+     accessed and extended by <code>(gnome gobject)</code>.
+    </p>
+
+    <h4>Basic types</h4>
+    <p>
+     The basic types in C each have a class within the GType system, and so they
+     also have a class within guile: <code>&lt;gchar&gt;</code>,
+     <code>&lt;guchar&gt;</code>, <code>&lt;gboolean&gt;</code>,
+     <code>&lt;gint&gt;</code>, <code>&lt;guint&gt;</code>,
+     <code>&lt;glong&gt;</code>, <code>&lt;gulong&gt;</code>,
+     <code>&lt;glong-long&gt;</code>, <code>&lt;gulong-long&gt;</code>,
+     <code>&lt;gfloat&gt;</code>, <code>&lt;gdouble&gt;</code>,
+     and <code>&lt;gchararray&gt;</code>.
+    </p>
+    <p>
+     As an implementation detail, instances of this type are internally stored
+     as GValues:
+<pre>
+   (make <code>&lt;gboolean&gt;</code> #:value #f)
+   (make <code>&lt;guint&gt;</code> #:value 85)
+   (make <code>&lt;gfloat&gt;</code> #:value 3.1415)
+   (make <code>&lt;gchararray&gt;</code> #:value "Hello World!")
+</pre>
+    </p>
+
+    <h4>Enums and flags</h4>
+    <p>
+     Enumerated values and bitflags are an essential part of many C APIs, and so
+     they are specially wrapped in the GLib type system. You can create new
+     enumerated types in Scheme, just as you can in C:
+<pre>
+   (define foo-vtable '#((hello "Hello World" 1) (test "Test" 2)))
+   (define gtype:foo (genum-register-static "Foo" foo-vtable))
+   (define &lt;foo&gt; (gtype-&gt;class gtype:foo))
+</pre>
+    <p>
+     You can create instances with <code>make</code>, just like with the other
+     types:
+    </p>
+<pre>
+   (make &lt;foo&gt; #:value 'hello)
+   (make &lt;foo&gt; #:value "Hello World")
+   (make &lt;foo&gt; #:value 1)
+</pre>
+    <p>
+     If there's an already existing enum or flags type, you can get information
+     about it:
+    </p>
+<pre>
+   (genum->value-table gtype:foo)
+</pre>
+    <p>
+     Enums and flags have a special representation on the Scheme side. You can
+     convert them to scheme values as symbols, names, or as a numeric value.
+    </p>
+<pre>
+   (define foo (make &lt;foo&gt; #:value 'hello))
+   (genum-&gt;symbol foo)
+   (genum-&gt;name foo)
+   (gvalue-&gt;scm foo)
+</pre>
+
+    <h4>Closures</h4>
+    <p>
+     Another data type provided by <code>libgobject</code> is the closure, an
+     abstraction for callable objects. The actual object is a function in some
+     language, be it C, Scheme, or even Python. You can create a closure in
+     guile with <code>make</code> (again):
+
+<pre>
+   (define callback (lambda (x)
+     (let ((retval (* x 8)))
+       (display (list "HELLO" x "RETURNS" retval)) (newline)
+       retval)))
+
+   (define closure (make &lt;gclosure&gt; #:return-type gtype:gint
+                         #:param-types (list gtype:gulong)
+                         #:func callback))
+</pre>
+    <p>
+     The closure you create can then be passed to a C function, so that any C
+     function (even those that know nothing about guile) can call back into
+     Scheme.
+    </p>
+    <p>
+     On the scheme side, if you get a closure from some function, you can invoke
+     it like <code>(gclosure-invoke closure 256)</code>, which would return
+     2048.
+    </p>
+
+    <h4>GType</h4>
+    <p>
+     One of the ideas behind guile-gobject was to provide complete access to
+     GLib's type system, making it possible to use all GTypes which are known in
+     C in scheme without any additional C glue code.
+    </p>
+    <p>
+     So, if you define a new GType "FooHello" in C, you can automatically use
+     this new type in Scheme. All you need to know is the GType, which you can
+     get from the name, and then use the handy <code>gtype-&gt;class</code>
+     procedure:
+    </p>
+<pre>
+   (define foo-type:hello (gtype-from-name "FooHello"))
+   (define &lt;foo-hello&gt; (gtype-&gt;class foo-type:hello))
+</pre>
+
+    <h4>GObject</h4>
+    <p>
+     &lt;gobject&gt; (`<code>GObject *</code>' in C) is the basic object type in
+     <code>libgobject</code>. <code>(gnome gobject)</code> allows you to access
+     existing GObject types, as well as to create new GObject types in scheme.
+    </p>
+    <p>
+     To access an already existing GObject type, all you need is its GType:
+    </p>
+<pre>
+   (define gtktype:label (gtype-from-name "GtkLabel"))
+   (define &lt;gtk-label&gt; (gtype-&gt;class gtktype:label))
+</pre>
+    <p>
+     Now you can create instances:
+    </p>
+<pre>
+   (make &lt;gtk-label&gt; #:label "Hello World!")
+</pre>
+    <p>
+     You can also connect to, and emit signals on, the new GObject instance:
+    </p>
+<pre>
+   (gobject-signal-connect test 'roswell
+     (lambda (object) (display (list "ROSWELL" object)) (newline)))
+   (gobject-signal-emit test 'roswell)
+</pre>
+    <p>
+     And get and set properties...
+    </p>
+<pre>
+   (gobject-get-property test 'foo)
+   (gobject-set-property test 'foo 345)
+</pre>
+
+    <h4>Deriving your own GObject types</h4>
+    <p>
+     You can create new GObject types directly from Scheme, deriving either from
+     a C object type or one you made in Scheme:
+    </p>
+<pre>
+   ;; deriving from &lt;gobject&gt;
+   (define gtype:test (gobject-type-register-static gtype:gobject "Test"))
+   (define &lt;test&gt; (gtype-&gt;class gtype:test))
+
+   ;; deriving from &gt;test&gt;
+   (define gtype:super (gobject-type-register-static gtype:test "Super"))
+   (define &lt;super&gt; (gtype-&gt;class gtype:super))
+</pre>
+    <p>
+     Now you can add new signals to your new type:
+    </p>
+<pre>
+   ;; Define a new signal "roswell".
+   (gobject-class-define-signal &lt;test&gt; 'roswell gtype:void)
+
+   ;; This is the default handler for this signal.
+   (define-method (test:roswell (object &lt;test&gt;))
+     (display (list "ROSWELL" object)) (newline))
+</pre>
+    <p>
+     Or add a new property to it:
+    </p>
+<pre>
+   (define param (make &lt;gparam-long&gt; #:name 'test))
+   (gobject-class-install-property &lt;test&gt; param)
+</pre>
+    <p>
+     Practically speaking, it is more convenient to do all of this at one time.
+     The following example pulls it all together:
+    </p>
+<pre>
+;; the full example can be found in examples/gtk/tic-tac-toe.scm; this just
+;; shows some of the syntax
+
+;; syntactic sugar to derive an object type, make the class, and define some
+;; signals all at the same time
+(define-gobject-class &lt;tic-tac-toe&gt; &lt;gtk-vbox&gt; "tic-tac-toe"
+  ;; signals follow
+  (tic-tac-toe #f))
+
+;; install some object properties, override some methods, and set up some
+;; storage on the guile object with object properties
+(let-params &lt;tic-tac-toe&gt;
+            ((board-size (&lt;gparam-int&gt; ; a gobject property and a
+				       ; procedure-with-setter of the
+				       ; same name
+                          :minimum 2 :maximum 100 :default-value 3
+                          :flags '(read write construct)))
+             (table #f)) ; a procedure-with-setter only -- with some
+                         ; voodoo so that it sets to the gtype-instance,
+                         ; not the gobject wrapper
+
+  ;; the (next-method) will store the value in a vector within the object
+  ;; wrapper; here we have our own custom method
+  (define-method (gobject:set-property (ttt &lt;tic-tac-toe&gt;) (name &lt;symbol&gt;) value)
+    (case name
+      ((board-size)
+       (set! (board-size ttt) value) ;; set using an object property
+       (display "hi mom\n"))))
+
+  (define-method (gobject:get-property (ttt &lt;tic-tac-toe&gt;) (name &lt;symbol&gt;))
+    (case name
+      ((board-size) (board-size ttt))))
+
+  (define-method (gobject:instance-init (class &lt;gtk-vbox&gt;) (ttt &lt;tic-tac-toe&gt;))
+    ;; you don't even need to do need to call (next-method) if you have your own
+    ;; custom property storage, like we have above
+    (next-method)
+    ;; setting the 'board-size property on ttt, which is done on
+    ;; construction (due to the 'construct flag in the param's flags),
+    ;; takes care of setting up widget internals. we don't actually do
+    ;; anything here -- which is nice, that means the object has a
+    ;; robust interface.
+    ))
+</pre>
+   </div>
+   <div id="footer">
+    <!-- hhmts start -->Last modified: Wed Jul 30 22:16:42 WAT 2003 <!-- hhmts end -->
+   </div>
+  </div>
+ </body>
+</html>
