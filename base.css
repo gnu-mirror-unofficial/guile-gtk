@@ -71,3 +71,8 @@ div#footer {
   padding-bottom: 1em;
 }
 
+div.copyright {
+	font-size: 8pt; 
+	padding: 4px;
+        background-color: #eee;
+}
