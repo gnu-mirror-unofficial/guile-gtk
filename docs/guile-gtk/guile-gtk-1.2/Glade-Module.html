@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+<title>Gtk Guile </title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
+<meta name="generator" content="makeinfo 4.5">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version .
+
+   <p>Copyright 2003 Kevin Ryde.
+
+   <p>Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+   <p>Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+   <p>Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+</head>
+<body>
+<div class="node">
+<p>
+Node:<a name="Glade%20Module">Glade Module</a>,
+Next:<a rel="next" accesskey="n" href="Gtk-GL-Module.html#Gtk%20GL%20Module">Gtk GL Module</a>,
+Previous:<a rel="previous" accesskey="p" href="GdkPixbuf-Module.html#GdkPixbuf%20Module">GdkPixbuf Module</a>,
+Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">Glade Module</h2>
+
+<p>The Glade interface module can be used with
+
+<pre class="example">     (use-modules (gtk-1.2 glade))
+     </pre>
+
+   <p>A call to <code>glade_init</code> is made automatically, an application doesn't need
+to do that itself.
+
+   <p>The following rules apply to the various Glade types.
+
+     <dl>
+<dt><code>GladeXML</code>
+     <dd><code>GladeXML</code> is a sub-class of <code>GtkObject</code> so the notes concerning it
+apply (see <a href="Gtk-Module.html#Gtk%20Module">Gtk Module</a>).  The following field accessors are provided,
+
+     <p>
+<table width="100%">
+<tr>
+<td align="left"><b>glade-xml-filename</b><i> gx
+          </i></td>
+<td align="right">Function</td>
+</tr>
+
+     <tr>
+<td align="left"><b>glade-xml-txtdomain</b><i> gx
+          </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+</td></tr>
+</table>
+     </dl>
+
+<br><p>
+<p>The following standard Glade functions have particular notes for the Guile
+Gtk interface.
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>glade-xml-get-widget</b><i> gladexml </i>[<i>name</i>]<i>
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+The default <var>name</var> is <code>#f</code>, meaning the top level widget in
+<var>gladexml</var>. 
+</td></tr>
+</table>
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>glade-xml-new</b><i> filename </i>[<i>root</i>]<i>
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+The default <var>root</var> is <code>#f</code>, meaning create the whole interface
+defined in <var>filename</var>. 
+</td></tr>
+</table>
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>glade-xml-signal-connect-full</b><i> gladexml name </i>[<i>proc</i>]<i>
+     </i></td>
+<td align="right">Function</td>
+</tr>
+
+<tr>
+<td align="left"><b>glade-xml-signal-autoconnect-full</b><i> gladexml </i>[<i>proc</i>]<i>
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+As per the Gtk signal handlers, there's no "user data" parameter to
+<var>proc</var>.  <var>proc</var> is called <code>(</code><var>proc</var><code> handlername object
+signalname signaldata connectobject after?)</code>.
+
+     <p>If <var>proc</var> is not given, or is <code>#f</code>, the default is to connect
+<var>signalname</var> on <var>connectobject</var> (or <var>object</var> if no
+<var>connectobject</var>) to the procedure <var>handlername</var>.  <var>handlername</var> is
+evaluated as Scheme code, and so can simply be the name of a Scheme procedure,
+or it can be a <code>lambda</code> form or similar evaluating to a procedure. 
+</td></tr>
+</table>
+
+<br><p>
+<p>The following standard Glade functions are not provided.
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>glade-init</b><i>
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+There is no separate init function to call, all initializations are done
+automatically when the <code>(gtk-1.2 glade)</code> module is loaded. 
+</td></tr>
+</table>
+
+   </body></html>
+

@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<title>Gtk Guile </title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
+<meta name="generator" content="makeinfo 4.5">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version .
+
+   <p>Copyright 2003 Kevin Ryde.
+
+   <p>Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+   <p>Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+   <p>Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+</head>
+<body>
+<div class="node">
+<p>
+Node:<a name="Gdk%20Extras">Gdk Extras</a>,
+Next:<a rel="next" accesskey="n" href="Gtk-Module.html#Gtk%20Module">Gtk Module</a>,
+Previous:<a rel="previous" accesskey="p" href="Gdk-Module.html#Gdk%20Module">Gdk Module</a>,
+Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">Gdk Extras</h2>
+
+<p>The following extra Gdk level functions are provided by Guile Gtk.
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>gdk-color-intern</b><i> color
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+If <var>color</var> is a <code>GdkColor</code> object, return it.  If it's a string then
+parse it using <code>gdk-color-parse</code> and allocate a pixel in the default
+colormap using <code>gdk-color-alloc</code>.
+
+     <p>A program can use <code>gdk-color-intern</code> as an easy way to convert strings to
+<code>GdkColor</code> objects, so as to avoid repeatedly having that done when
+calling functions expecting a color. 
+</td></tr>
+</table>
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>gdk-color-new</b><i> type
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+Return a new <code>GdkColor</code> object, with zeros in all fields. 
+</td></tr>
+</table>
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>gdk-event-new</b><i> type
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+Return a new <code>GdkEvent</code> object of the given <code>GdkEventType</code>, and with
+other fields all set to zero.  This is a standard function in Gtk 2.0, and
+Guile Gtk makes it available under Gtk 1.2 also. 
+</td></tr>
+</table>
+
+<p>
+<table width="100%">
+<tr>
+<td align="left"><b>gdk-font-intern</b><i> font
+     </i></td>
+<td align="right">Function</td>
+</tr>
+</table>
+<table width="95%" align="center">
+<tr><td>
+If <var>font</var> is a <code>GdkFont</code> object, return it.  If it's a string then
+load that font using <code>gdk-font-load</code>, throwing an error if that function
+fails.
+
+     <p>A program can use <code>gdk-font-intern</code> as an easy way to convert strings to
+<code>GdkFont</code> objects, so as to avoid repeatedly having that done when
+calling functions expecting a font. 
+</td></tr>
+</table>
+
+   </body></html>
+
