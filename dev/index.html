@@ -31,71 +31,20 @@
 
     <p>
      Our CVS repository can be checked out with <code>cvs -d
-     :pserver:anonymous@subversions.gnu.org:/cvsroot/guile-gtk/ co
-     guile-gtk</code>. Change into the <code>guile-gtk</code>
+     :ext:anoncvs@subversions.gnu.org:/cvsroot/guile-gtk/ co guile-gtk</code>.
+     The password is <i>anoncvs</i>. Change into the <code>guile-gtk</code>
      directory and run <code>./autogen.sh</code> to build the code.
     </p>
 
     <p>
      You can also view the projects's CVS on the web.
     </p>
-
-    <h3>guile-gobject Arch repository</h3>
-
-    <p>
-     guile-gobject has switched primary development from CVS to <a
-     href="http://www.gnu.org/software/gnu-arch">GNU Arch</a>, which
-     offers greater flexibility and more powerful features. If you
-     want to hack on guile-gobject, you are strongly encouraged to
-     take a look at Arch. CVS access to guile-gobject is also
-     provided, but is more-or-less intended as a read-only snapshot of
-     the Arch repository.
-    </p>
-
-    <p>
-     <table>
-      <tr>
-       <td><strong>Archive name:</strong></td>
-       <td><code>guile-gnome-devel@gnu.org--2004</code></td>
-      </tr>
-      <tr>
-       <td><strong>Archive location:</strong></td>
-       <td><code>http://people.debian.org/~rotty/arch/guile-gnome-devel@gnu.org/2004/</code></td>
-      </tr>
-     </table>
-    </p>
-
-    <p>
-     To check out the latest development version directly from the 
-     archive, run 
-     <code><pre>
-       tla register-archive http://people.debian.org/~rotty/arch/guile-gnome-devel@gnu.org/2004/
-       tla get guile-gnome-devel@gnu.org--2004/guile-gobject--dev--0 guile-gobject</pre></code>
-     Then change into the <code>guile-gobject</code> directory and run
-     <code>./autogen.sh</code> to build the code.
-    </p>
-    
-    <p>
-     To check out a released version, use a release branch, e.g.:
-     <code><pre>
-       tla get guile-gnome-devel@gnu.org--2004/guile-gobject--release--0.5--patch-3 guile-gobject-0.5.3</pre></code>
-     for the 0.5.3 release.
-    </p>
-    
-    <p>
-     The <code>dev--0</code> branch always targets the latest
-     (unstable) GNOME version; when a new stable GNOME is released, a
-     corresponding <code>main</code> branch is created - currently,
-     there is <code>main--2.4</code> which targets the GNOME 2.4
-     series.
-    </p>
-    
    </div>
 
 <p></p>
 <div class="copyright">
 <p>
-Copyright (C) 2003 
+Copyright (C) 2003,2004
 Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, 
 MA 02111, USA
 </p>
@@ -107,7 +56,7 @@ permitted in any medium, provided this notice is preserved.
 Updated:
 
 <!-- timestamp start -->
-$Date: 2004/04/13 19:27:27 $ $Author: rottmann $
+$Date: 2004/07/26 14:09:00 $ $Author: wingo $
 <!-- timestamp end -->
 </p>
 </div>

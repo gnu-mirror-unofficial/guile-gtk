@@ -18,96 +18,18 @@
    <div id="text">
 
     <h2>releases</h2>
-    <p>
-     As explained on the <a href="../docs/">documentation page</a>, there are a
-     number of separate sub-projects within <code>guile-gtk</code>. See their
-     documentation pages for more information about the respective projects.
-    </p>
 
     <p><b>
     For the time being, release tarballs are not available.  Please
     use the <a href="../dev/">development snapshots</a> from CVS and Arch.
     </b><p>
 
-<!--
-    <p>
-     You can go directly to our <a
-     href="http://subversions.gnu.org/projects/guile-gtk/">files page</a> on
-     savannah to have a look at our latest releases. For the unafraid, <a
-     href="../dev/">development snapshots</a> are always available from CVS.
-    </p>
--->
-
-    <h3><code>guile-gobject</code></h3>
-
-    <h4>0.5.3</h4>
-    <p>
-     No major changes, reasonably stable. Installs forked version of
-     gw-standard-spec.scm, to be removed when g-wrap takes up the patch.
-    </p>
-
-    <h4>0.5.2</h4>
-    <p>
-     Changes in this release include:
-     <ul>
-      <li>override the proper method in example-1.scm</li>
-      <li>rewrite tic-tac-toe.scm to be a nice demo of subclassing GObjects,
-        with let-params</li>
-      <li>create idle sources with G_PRIORITY_DEFAULT_IDLE, not
-        G_PRIORITY_DEFAULT -- thanks to owen taylor</li>
-      <li>make commentary of gobject.scm help-compliant</li>
-      <li>move pspec arg details to primitives.scm</li>
-      <li>add support for setting pspec-flags when making a new pspec</li>
-      <li>change prototypes for gobject:{get,set}-property to be sane and easily
-        overridable</li>
-      <li>new syntax: define-gobject-class</li>
-      <li>new syntax: let-params</li>
-      <li>add null-ok to some glib function parameters</li>
-      <li>gparam-spec:args actually returns the args, zipped up with their
-        corresponding keywords</li>
-      <li>new procedure: gobject:gwrap-set-all-types-used</li>
-      <li>made gtype-instances have a 1 to 1 correspondence with their</li>
-        GTypeInstance counterparts
-      <li>generalized equal? to work on objects</li>
-      <li>put generics in the root module, for better or for worse</li>
-      <li>wrap GTypeClasses so we can wrap class methods</li>
-      <li>new variable: gruntime:byte-order</li>
-      <li>add gtype-class slot to all gtype-instances (set-once)</li>
-      <li>added some files that were in the old CVS but not in releases</li>
-     </ul>
-    </p>
-
-    <h4>0.5.1</h4>
-    <p>
-     Changes in this release include:
-     <ul>
-      <li>changes in the defs support</li>
-      <li>always ref objects returned unless (caller-owns-return #t)
-      is present in the defs</li>
-      <li>don't allow NULL values unless (null-ok) is present in the
-      defs parameter specification</li>
-      <li>in gobject.scm, better enum support in make-value-from-scm and make
-      objects of the proper type in gvalue->scm</li>
-     </ul>
-    </p>
-
-    <h4>0.5.0</h4>
-    <p>
-     <code>guile-gobject</code>, back from the dead! See the <a
-     href="http://subversions.gnu.org/projects/guile-gtk/">release notes</a> for
-     more details.
-    </p>
-
-    <h3><code>guile-gtk</code></h3>
-
-    <h3><code>gnome-guile</code></h3>
-
    </div>
 
 <p></p>
 <div class="copyright">
 <p>
-Copyright (C) 2003 
+Copyright (C) 2003,2004
 Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, 
 MA 02111, USA
 </p>
@@ -119,7 +41,7 @@ permitted in any medium, provided this notice is preserved.
 Updated:
 
 <!-- timestamp start -->
-$Date: 2004/04/13 19:27:27 $ $Author: rottmann $
+$Date: 2004/07/26 14:09:00 $ $Author: wingo $
 <!-- timestamp end -->
 </p>
 </div>
