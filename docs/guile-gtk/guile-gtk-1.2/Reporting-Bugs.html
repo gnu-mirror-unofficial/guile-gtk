@@ -1,48 +1,62 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>Reporting Bugs - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Installing.html#Installing" title="Installing">
+<link rel="next" href="General-Conventions.html#General-Conventions" title="General Conventions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="Reporting%20Bugs">Reporting Bugs</a>,
-Next:<a rel="next" accesskey="n" href="General-Conventions.html#General%20Conventions">General Conventions</a>,
-Previous:<a rel="previous" accesskey="p" href="Known-Problems.html#Known%20Problems">Known Problems</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="Reporting-Bugs"></a>Next:&nbsp;<a rel="next" accesskey="n" href="General-Conventions.html#General-Conventions">General Conventions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Installing.html#Installing">Installing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">Reporting Bugs</h2>
+<h2 class="chapter">3 Reporting Bugs</h2>
 
-   <p>If you think you've found a bug in Guile-Gtk, please investigate and make a
-full report.  Include the following in any report,
+<p><a name="index-Bugs-10"></a><a name="index-Reporting-bugs-11"></a>
+If you think you've found a bug in Guile-Gtk, please investigate and make a
+full report.  See also <a href="Known-Bugs.html#Known-Bugs">Known Bugs</a>.  Include the following in any report,
 
      <ul>
-<li>System and CPU type, obtained from running <code>./config.guess</code> (or
-<code>uname -a</code> if your system is unknown).
+<li>System and CPU type, obtained from running <span class="samp">./config.guess</span> (or
+<span class="samp">uname -a</span> if your system is unknown).
 
      <li>The versions of Guile-Gtk, Guile, Gtk and Glib, the configuration options
 used, and if patched or packaged then say so.
@@ -53,16 +67,16 @@ used, and if patched or packaged then say so.
 does, and what you think it should do.
 
      <li>If you get a Scheme level error, include the backtrace obtained from running
-with <code>guile --debug</code>.
+with <span class="samp">guile --debug</span>.
 
      <li>If you get a C level crash, try running under the debugger and include a
-backtrace (<code>where</code> in GDB) if it's informative.
+backtrace (<span class="samp">where</span> in GDB) if it's informative.
 
-     <li>If the bug is related to <code>./configure</code>, then send the contents of
-<code>config.log</code>. 
+     <li>If the bug is related to <span class="samp">./configure</span>, then send the contents of
+<span class="file">config.log</span>. 
 </ul>
 
-<p>Send your report to <a href="mailto:guile-gtk-general@gnu.org">guile-gtk-general@gnu.org</a>.
+<p class="noindent">Send your report to <a href="mailto:guile-gtk-general@gnu.org">guile-gtk-general@gnu.org</a>.
 
    </body></html>
 

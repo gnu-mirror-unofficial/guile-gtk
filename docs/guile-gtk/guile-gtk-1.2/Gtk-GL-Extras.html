@@ -1,82 +1,73 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>Gtk GL Extras - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Gtk-GL-Module.html#Gtk-GL-Module" title="Gtk GL Module">
+<link rel="next" href="Tips-and-Techniques.html#Tips-and-Techniques" title="Tips and Techniques">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="Gtk%20GL%20Extras">Gtk GL Extras</a>,
-Next:<a rel="next" accesskey="n" href="Tips-and-Techniques.html#Tips%20and%20Techniques">Tips and Techniques</a>,
-Previous:<a rel="previous" accesskey="p" href="Gtk-GL-Module.html#Gtk%20GL%20Module">Gtk GL Module</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="Gtk-GL-Extras"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Tips-and-Techniques.html#Tips-and-Techniques">Tips and Techniques</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Gtk-GL-Module.html#Gtk-GL-Module">Gtk GL Module</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">Gtk GL Extras</h2>
+<h2 class="chapter">12 Gtk GL Extras</h2>
 
-<p>The following extra Gtk GL level functions are provided by Guile Gtk.
+<p><a name="index-Gtk-GL-module-274"></a><a name="index-Gtk-GL-extras-275"></a>
+The following extra Gtk GL level functions are provided by Guile Gtk.
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-gl-area-make-current-force</b><i> area
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Make the given <var>area</var> current, throwing an error if this fails. 
-</td></tr>
-</table>
+<div class="defun">
+&mdash; Function: <b>gtk-gl-area-make-current-force</b><var> area<a name="index-gtk_002dgl_002darea_002dmake_002dcurrent_002dforce-276"></a></var><br>
+<blockquote><p>Make the given <var>area</var> current, throwing an error if this fails. 
+</p></blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>with-gl-area</b><i> area body<small class="dots">...</small>
-     </i></td>
-<td align="right">macro</td>
-</tr>
-
-<tr>
-<td align="left"><b>with-render-to-gl-area</b><i> area body<small class="dots">...</small>
-     </i></td>
-<td align="right">macro</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Evaluate the <var>body</var> forms with <var>area</var> made current.  An error is
+<div class="defun">
+&mdash; macro: <b>with-gl-area</b><var> area body<small class="dots">...</small><a name="index-with_002dgl_002darea-277"></a></var><br>
+&mdash; macro: <b>with-render-to-gl-area</b><var> area body<small class="dots">...</small><a name="index-with_002drender_002dto_002dgl_002darea-278"></a></var><br>
+<blockquote><p>Evaluate the <var>body</var> forms with <var>area</var> made current.  An error is
 thrown if <var>area</var> cannot be set.
 
-     <p><code>with-gl-area</code> just sets the area, <code>with-render-to-gl-area</code> in
+        <p><code>with-gl-area</code> just sets the area, <code>with-render-to-gl-area</code> in
 addition calls <code>gtk-gl-area-swap-buffers</code> after <var>body</var>, to display
 whatever <var>body</var> may have drawn to the back buffer. 
-</td></tr>
-</table>
+</p></blockquote></div>
 
    </body></html>
 

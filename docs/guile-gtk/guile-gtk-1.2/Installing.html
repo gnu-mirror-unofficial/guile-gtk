@@ -1,68 +1,79 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>Installing - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Introduction.html#Introduction" title="Introduction">
+<link rel="next" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="Installing">Installing</a>,
-Next:<a rel="next" accesskey="n" href="Known-Problems.html#Known%20Problems">Known Problems</a>,
-Previous:<a rel="previous" accesskey="p" href="Introduction.html#Introduction">Introduction</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="Installing"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction.html#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">Installing</h2>
+<h2 class="chapter">2 Installing</h2>
 
-   <p>To build and install Guile-Gtk you will need Guile 1.6.4 or higher, and Glib
+<p><a name="index-Installing-6"></a>
+To build and install Guile-Gtk you will need Guile 1.6.4 or higher, and Glib
 and Gtk versions 1.2.x (1.2.10 for instance).  Gdk-Pixbuf, Glade and Gtk-GL
 are optional, support for them will be included if they're available.
 
-   <p>Guile-Gtk uses an Autoconf, Automake and Libtool based configuration system. 
+   <p><a name="index-Configure-7"></a>Guile-Gtk uses an Autoconf, Automake and Libtool based configuration system. 
 A basic build can be made with,
 
 <pre class="example">     ./configure
      make
-     </pre>
-
-<p>Some self-tests can be run with
+</pre>
+   <p><a name="index-Check-8"></a><a name="index-Self-tests-9"></a>Some self-tests can be run with
 
 <pre class="example">     make check
-     </pre>
-
-<p>And you can install (under <code>/usr/local</code> by default) with
+</pre>
+   <p class="noindent">And you can install (under <span class="file">/usr/local</span> by default) with
 
 <pre class="example">     make install
-     </pre>
-
-   <p>The file <code>INSTALL</code> has generic information about <code>./configure</code>. 
-Running <code>./configure --help</code> will print a summary of the usage and
+</pre>
+   <p>The file <span class="file">INSTALL</span> has generic information about <span class="samp">./configure</span>. 
+Running <span class="samp">./configure --help</span> will print a summary of the usage and
 options.
 
-   <p>Installing under the same <code>--prefix</code> as Guile will make Guile Gtk
+   <p>Installing under the same <span class="option">--prefix</span> as Guile will make Guile Gtk
 available immediately.  If installed under a different tree it will be
 necessary to add to <code>%load-path</code> and possibly <code>LTDL_LIBRARY_PATH</code> so
 the modules and interface libraries can be found.
@@ -70,10 +81,7 @@ the modules and interface libraries can be found.
    <p>The following Guile-Gtk specific options are available.
 
      <dl>
-<dt><code>--with-gdk-pixbuf=yes/no</code>
-     <dd><dt><code>--with-libglade=yes/no</code>
-     <dd><dt><code>--with-gtkgl=yes/no</code>
-     <dd>Enable or disable Gdk-Pixbuf, Glade, or Gtk-GL support, respectively.  The
+<dt><span class="option">--with-gdk-pixbuf=yes/no</span><dt><span class="option">--with-libglade=yes/no</span><dt><span class="option">--with-gtkgl=yes/no</span><dd>Enable or disable Gdk-Pixbuf, Glade, or Gtk-GL support, respectively.  The
 default for each is to enable if available. 
 </dl>
 

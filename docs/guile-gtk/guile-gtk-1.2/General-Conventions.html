@@ -1,43 +1,57 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>General Conventions - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
+<link rel="next" href="Gdk-Module.html#Gdk-Module" title="Gdk Module">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="General%20Conventions">General Conventions</a>,
-Next:<a rel="next" accesskey="n" href="Gdk-Module.html#Gdk%20Module">Gdk Module</a>,
-Previous:<a rel="previous" accesskey="p" href="Reporting-Bugs.html#Reporting%20Bugs">Reporting Bugs</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="General-Conventions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Gdk-Module.html#Gdk-Module">Gdk Module</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">General Conventions</h2>
+<h2 class="chapter">4 General Conventions</h2>
 
-   <p>Unless otherwise stated, Gtk+ functions and variables are made available in
+<p><a name="index-Conventions-12"></a>
+Unless otherwise stated, Gtk+ functions and variables are made available in
 Guile with names transformed to Scheme style.  This means underscores become
 hyphens, and only lower case is used.
 
@@ -47,46 +61,38 @@ Guile, or <code>GTK_WIDGET_FLAGS</code> is <code>gtk-widget-flags</code>.
    <p>The following general rules are applied to parameters and return values.
 
      <dl>
-<dt><code>NULL</code>
-     <dd><code>NULL</code> is represented as <code>#f</code>, for functions which accept or return
+<dt><code>NULL</code><dd><a name="index-_0040code_007bNULL_007d-13"></a><code>NULL</code> is represented as <code>#f</code>, for functions which accept or return
 that.
 
-     <br><dt><code>int</code>, <code>gint</code>, etc
-     <dd>All integer types are simply Guile integers.  Range checks are applied to
-parameters, and "inexact" values are not accepted, even if they happen to be
-integers.  (see <a href="../guile/Exactness.html#Exactness">Exact and Inexact Numbers</a>)
+     <br><dt><code>int</code>, <code>gint</code>, etc<dd><a name="index-Integers-14"></a><a name="index-gint-15"></a>All integer types are simply Guile integers.  Range checks are applied to
+parameters, and &ldquo;inexact&rdquo; values are not accepted, even if they happen to be
+integers.  (see <a href="../guile/Exactness.html#Exactness">Exact and Inexact Numbers (The Guile Reference Manual)</a>)
 
-     <br><dt><code>gboolean</code>
-     <dd>Booleans are returned as the usual Scheme <code>#t</code> and <code>#f</code>.  For
+     <br><dt><code>gboolean</code><dd><a name="index-Booleans-16"></a><a name="index-gboolean-17"></a>Booleans are returned as the usual Scheme <code>#t</code> and <code>#f</code>.  For
 parameters, any non-<code>#f</code> value is taken to be true.
 
-     <br><dt><code>GList</code>, <code>GSList</code> etc
-     <dd>Glib lists are returned as Guile lists.  For instance
+     <br><dt><code>GList</code>, <code>GSList</code> etc<dd><a name="index-Lists-18"></a><a name="index-GList-19"></a><a name="index-GSList-20"></a>Glib lists are returned as Guile lists.  For instance
 <code>gtk-container-children</code> returns a list of widgets.  In parameters,
 either a Guile list or vector can be given.
 
-     <br><dt>Arrays
-     <dd>C level arrays are returned as Guile lists.  In parameters, either a Guile
+     <br><dt>Arrays<dd><a name="index-Arrays-21"></a>C level arrays are returned as Guile lists.  In parameters, either a Guile
 list or vector can be given.  For instance <code>gtk-curve-set-vector</code> takes a
 list or vector of floats.
 
-     <br><dt>Enumerations
-     <dd>Enumerations are represented in Guile as symbols, with names corresponding to
+     <br><dt>Enumerations<dd><a name="index-Enumerations-22"></a>Enumerations are represented in Guile as symbols, with names corresponding to
 the C definitions and without the prefix indicating their type.
 
      <p>For instance <code>GtkWindowType</code> value <code>GTK_WINDOW_TOPLEVEL</code> is just the
 symbol <code>toplevel</code>, hence a call <code>(gtk-window-new 'toplevel)</code>.
 
-     <br><dt>Flags
-     <dd>Sets of flags (bitwise ORs at the C level) are represented in Guile as a list
+     <br><dt>Flags<dd><a name="index-Flags-23"></a>Sets of flags (bitwise ORs at the C level) are represented in Guile as a list
 of symbols, possibly an empty list, with names corresponding to the C
 definitions and without the prefix indicating their type.
 
      <p>For example a <code>GdkModifierType</code> value could be the list <code>(shift-mask
 control-mask)</code>.
 
-     <br><dt>Multiple return values
-     <dd>Multiple values are returned in a list.  This is the C return value plus
+     <br><dt>Multiple return values<dd><a name="index-Multiple-return-values-24"></a>Multiple values are returned in a list.  This is the C return value plus
 values stored through pointers.
 
      <p>For example at the C level <code>gtk_pixmap_get</code> returns a <code>GdkPixmap</code>
@@ -97,16 +103,14 @@ returns these in a two-element list.
 stores an <code>x</code> and <code>y</code> through pointers.  These are returned from
 <code>gdk-window-at-pointer</code> in a three element list.
 
-     <br><dt>Strings
-     <dd>Gtk generally uses strings encoded in UTF-8.  Guile (version 1.6) has no
+     <br><dt>Strings<dd>Gtk generally uses strings encoded in UTF-8.  Guile (version 1.6) has no
 direct notion of multi-byte characters in strings, so applications will need
 to be careful.
 
-     <p>Converting to <code>GdkWChar</code> with <code>gdk-mbstowc</code> (see <a href="Gdk-Module.html#Gdk%20Module">Gdk Module</a>) is
+     <p>Converting to <code>GdkWChar</code> with <code>gdk-mbstowc</code> (see <a href="Gdk-Module.html#Gdk-Module">Gdk Module</a>) is
 one way to identify character boundaries at least.
 
-     <br><dt>Threading
-     <dd>Guile Gtk programs can use Guile threads in the normal way.  Guile Gtk uses a
+     <br><dt>Threading<dd><a name="index-Threading-25"></a>Guile Gtk programs can use Guile threads in the normal way.  Guile Gtk uses a
 mutex where necessary to prevent two threads from executing Gtk/Gdk functions
 simultaneously, since most are not themselves thread safe.  Currently this
 mutex is separate from the standard Gtk lock <code>gdk_threads_mutex</code>.
@@ -117,7 +121,7 @@ reentrancy protection <code>gdk_threads_enter</code> and <code>gdk_threads_leave
 a little tricky for an application to use correctly, hence the stronger
 mechanism in Guile Gtk.
 
-     <p><code>gdk-threads-enter</code> and <code>gdk-threads-leave</code> are still available, and
+     <p><a name="index-gdk_002dthreads_002denter-26"></a><a name="index-gdk_002dthreads_002dleave-27"></a><code>gdk-threads-enter</code> and <code>gdk-threads-leave</code> are still available, and
 can be used in the normal way.  One use for instance might be to prevent the
 main loop from running signal handlers while a separate thread is updating
 something.  Though such coordination is probably better handled with

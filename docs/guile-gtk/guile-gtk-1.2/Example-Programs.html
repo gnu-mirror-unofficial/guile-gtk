@@ -1,94 +1,94 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>Example Programs - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Obsolete-Features.html#Obsolete-Features" title="Obsolete Features">
+<link rel="next" href="Concept-Index.html#Concept-Index" title="Concept Index">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="Example%20Programs">Example Programs</a>,
-Next:<a rel="next" accesskey="n" href="Concept-Index.html#Concept%20Index">Concept Index</a>,
-Previous:<a rel="previous" accesskey="p" href="Obsolete-Features.html#Obsolete%20Features">Obsolete Features</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="Example-Programs"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Concept-Index.html#Concept-Index">Concept Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Obsolete-Features.html#Obsolete-Features">Obsolete Features</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">Example Programs</h2>
+<h2 class="chapter">16 Example Programs</h2>
 
-   <p>The <code>examples</code> subdirectory in the sources contains various programs
+<p><a name="index-Example-programs-291"></a>
+The <span class="file">examples</span> subdirectory in the sources contains various programs
 illustrating Guile Gtk.
 
      <dl>
-<dt><code>calc.scm</code>
-     <dd>A HP48 style desk calculator.  This takes quite a bit of code to setup all the
+<dt><span class="file">calc.scm</span><dd><a name="index-Calculator-292"></a>A HP48 style desk calculator.  This takes quite a bit of code to setup all the
 widgets, but there's plenty of comments.
 
-     <p>A <code>.calcrc</code> in the user's home directory can add new buttons.  The
+     <p>A <span class="file">.calcrc</span> in the user's home directory can add new buttons.  The
 ability to load user extensions is a powerful feature and a significant
 advantage Guile Gtk has over the regular C interface to Gtk.
 
-     <br><dt><code>calendar.scm</code>
-     <dd>A tiny program showing the <code>GtkCalendar</code> widget.
+     <br><dt><span class="file">calendar.scm</span><dd><a name="index-Calendar-293"></a>A tiny program showing the <code>GtkCalendar</code> widget.
 
-     <br><dt><code>clist.scm</code>
-     <dd>Display the password file in a window.  (You might need to enlarge the window
+     <br><dt><span class="file">clist.scm</span><dd>Display the password file in a window.  (You might need to enlarge the window
 manually.)
 
-     <br><dt><code>continuations.scm</code>
-     <dd>Illustrate the use of Scheme continuations to allow application code to wait
+     <br><dt><span class="file">continuations.scm</span><dd><a name="index-Continuations-example-294"></a>Illustrate the use of Scheme continuations to allow application code to wait
 for a dialog to return, but in fact run the usual Gtk main loop.
 
-     <br><dt><code>hello-world.scm</code>
-     <dd>A simple program creating a button which can be pressed to print a familiar
+     <br><dt><span class="file">hello-world.scm</span><dd><a name="index-Hello-world-example-295"></a>A simple program creating a button which can be pressed to print a familiar
 message.
 
-     <br><dt><code>metaspline.scm</code>
-     <dd>A Metafont style bezier spline curve editor, using the Gdk drawing primitives.
+     <br><dt><span class="file">metaspline.scm</span><dd><a name="index-Splines-296"></a>A Metafont style bezier spline curve editor, using the Gdk drawing primitives.
 
-     <br><dt><code>simple.scm</code>
-     <dd>A simple program with a label and a button.
+     <br><dt><span class="file">simple.scm</span><dd>A simple program with a label and a button.
 
-     <br><dt><code>simple.glade</code>, <code>run-glade.scm</code>
-     <dd>A simple Glade application.  Notice the use of <code>lambda</code> forms in the
-signal handlers.  <code>run-glade.scm</code> loads and runs a glade application, for
+     <br><dt><span class="file">simple.glade</span>, <span class="file">run-glade.scm</span><dd><a name="index-Glade-examples-297"></a>A simple Glade application.  Notice the use of <code>lambda</code> forms in the
+signal handlers.  <span class="file">run-glade.scm</span> loads and runs a glade application, for
 instance
 
      <pre class="example">          guile -s run-glade.scm simple.glade
-          </pre>
-
-     <br><dt><code>test-dnd.scm</code>
-     <dd><dt><code>test-gdk.scm</code>
-     <dd><dt><code>test-glade.scm</code>
-     <dd><dt><code>test-gtk.scm</code>
-     <dd>Test programs for drag-and-drop, Gdk, Glade and Gtk respectively.  These are
+     </pre>
+     <br><dt><span class="file">test-dnd.scm</span><dt><span class="file">test-gdk.scm</span><dt><span class="file">test-glade.scm</span><dt><span class="file">test-gtk.scm</span><dd><a name="index-Test-programs-298"></a>Test programs for drag-and-drop, Gdk, Glade and Gtk respectively.  These are
 primarily for the developers' use, but can be run to see something happen and
 to test Guile Gtk is working.
 
-     <br><dt><code>tictactoe.scm</code>
-     <dd>Illustrate the use of <code>gtk-class-new</code> to create a tic-tac-toe widget. 
-There's no actual "X" and "O" markers, only three squares in a row
+     <br><dt><span class="file">tictactoe.scm</span><dd>Illustrate the use of <code>gtk-class-new</code> to create a tic-tac-toe widget. 
+There's no actual &ldquo;X&rdquo; and &ldquo;O&rdquo; markers, only three squares in a row
 recognised as a win. 
 </dl>
 

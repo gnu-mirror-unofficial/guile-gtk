@@ -1,95 +1,91 @@
 <html lang="en">
 <head>
-<title>Gtk Guile </title>
+<title>Gtk Extras - Gtk Guile 0.40</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version .">
-<meta name="generator" content="makeinfo 4.5">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Gtk-Module.html#Gtk-Module" title="Gtk Module">
+<link rel="next" href="GdkPixbuf-Module.html#GdkPixbuf-Module" title="GdkPixbuf Module">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version .
+version 0.40.
 
-   <p>Copyright 2003 Kevin Ryde.
+Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
-   <p>Permission is granted to make and distribute verbatim copies of
+Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
 are preserved on all copies.
 
-   <p>Permission is granted to copy and distribute modified versions of this
+Permission is granted to copy and distribute modified versions of this
 manual under the conditions for verbatim copying, provided that the entire
 resulting derived work is distributed under the terms of a permission
 notice identical to this one.
 
-   <p>Permission is granted to copy and distribute translations of this manual
+Permission is granted to copy and distribute translations of this manual
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation approved
 by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
 </head>
 <body>
 <div class="node">
 <p>
-Node:<a name="Gtk%20Extras">Gtk Extras</a>,
-Next:<a rel="next" accesskey="n" href="GdkPixbuf-Module.html#GdkPixbuf%20Module">GdkPixbuf Module</a>,
-Previous:<a rel="previous" accesskey="p" href="Gtk-Module.html#Gtk%20Module">Gtk Module</a>,
-Up:<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<a name="Gtk-Extras"></a>Next:&nbsp;<a rel="next" accesskey="n" href="GdkPixbuf-Module.html#GdkPixbuf-Module">GdkPixbuf Module</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Gtk-Module.html#Gtk-Module">Gtk Module</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <hr><br>
 </div>
 
-<h2 class="chapter">Gtk Extras</h2>
+<h2 class="chapter">8 Gtk Extras</h2>
 
-<p>The following extra Gtk level functions are provided by Guile Gtk.
+<p><a name="index-Gtk-module-234"></a><a name="index-Gtk-extras-235"></a>
+The following extra Gtk level functions are provided by Guile Gtk.
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-callback-trampoline</b><i> </i>[<i>tramp</i>]<i>
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Get or set the trampoline procedure for Gtk callbacks.  With no arguments, the
+<div class="defun">
+&mdash; Function: <b>gtk-callback-trampoline</b> [<var>tramp</var>]<var><a name="index-gtk_002dcallback_002dtrampoline-236"></a></var><br>
+<blockquote><p><a name="index-Callbacks-237"></a><a name="index-Signal-handlers-238"></a><a name="index-Error-handler-239"></a><a name="index-Trampoline-240"></a>Get or set the trampoline procedure for Gtk callbacks.  With no arguments, the
 current trampoline is returned.  With an argument, the trampoline procedure is
 set, and the old procedure returned.
 
-     <p>When making a callback for signals etc, Guile Gtk goes through this
+        <p>When making a callback for signals etc, Guile Gtk goes through this
 trampoline.  <var>tramp</var> is called as <code>(</code><var>tramp</var><code> proc args)</code>, where
 <code>proc</code> is the application procedure to call, and <code>args</code> is a list of
 arguments for it (possibly empty).  A minimal trampoline would be,
 
      <pre class="example">          (define (my-trampoline proc args)
             (apply proc args))
-          </pre>
+     </pre>
+        <p class="noindent">(which of course is just <code>apply</code> itself, no need for a new definition).
 
-     <p>(which of course is just <code>apply</code> itself, no need for a new definition).
-
-     <p>The default trampoline uses <code>catch</code> to trap errors from the callback, and
-displays them in a window (see <a href="../guile/Catch.html#Catch">Catching Exceptions</a>).  The aim is to give the user some feedback in the
+        <p>The default trampoline uses <code>catch</code> to trap errors from the callback, and
+displays them in a window (see <a href="../guile/Catch.html#Catch">Catching Exceptions (The Guile Reference Manual)</a>).  The aim is to give the user some feedback in the
 GUI about what has gone wrong, rather than suddenly terminating.  An
 application can set a new trampoline to do this in its preferred way. 
-</td></tr>
-</table>
+</p></blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-class-new</b><i> type name
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Return a new <code>GtkType</code> with the given <var>name</var> (a string), created as a
+<div class="defun">
+&mdash; Function: <b>gtk-class-new</b><var> type name<a name="index-gtk_002dclass_002dnew-241"></a></var><br>
+<blockquote><p>Return a new <code>GtkType</code> with the given <var>name</var> (a string), created as a
 sub-class of <var>type</var>.
 
-     <p>Instances of the new type can be created with <code>gtk-widget-new</code> in the
+        <p>Instances of the new type can be created with <code>gtk-widget-new</code> in the
 usual way.  The new type has the same size as the given <var>type</var>, there's no
 mechanism to add extra data fields.  Guile object properties can be used for
-such things (see <a href="../guile/Object-Properties.html#Object%20Properties">Object Properties</a>)
+such things (see <a href="../guile/Object-Properties.html#Object-Properties">Object Properties (The Guile Reference Manual)</a>)
 
-     <p>The main advantage of a new class is that it can be type checked in a fashion
+        <p>The main advantage of a new class is that it can be type checked in a fashion
 similar to other Gtk objects.  For instance,
 
      <pre class="example">          (define my-foo-button-type
@@ -105,101 +101,82 @@ similar to other Gtk objects.  For instance,
             (or (my-foo-button? obj)
                 (error "Wrong object type: ~a" obj))
             ...)
-          </pre>
-     </td></tr>
-</table>
+     </pre>
+        <p>It also works to use <code>'MyFooButton</code> like the builtin types, instead of
+holding the <code>GtkType</code> in a variable (<code>my-foo-button-type</code>). 
+</p></blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-pixmap-new-from-file</b><i> filename parent
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Return a new <code>GtkPixmap</code> widget, containing an XPM image loaded from
+<div class="defun">
+&mdash; Function: <b>gtk-list-append-item</b><var> list listitem<a name="index-gtk_002dlist_002dappend_002ditem-242"></a></var><br>
+&mdash; Function: <b>gtk-list-prepend-item</b><var> list listitem<a name="index-gtk_002dlist_002dprepend_002ditem-243"></a></var><br>
+<blockquote><p>Append or prepend a single item to a <code>GtkList</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>gtk-pixmap-new-from-file</b><var> filename parent<a name="index-gtk_002dpixmap_002dnew_002dfrom_002dfile-244"></a></var><br>
+<blockquote><p>Return a new <code>GtkPixmap</code> widget, containing an XPM image loaded from
 <var>filename</var> as per <code>gdk-pixmap-colormap-create-from-xpm</code>. 
 <var>parent</var> is an intended parent widget, used to get the colormap for the
 image. 
-</td></tr>
-</table>
+</p></blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-signal-new-generic</b><i> name flags objtype rettype paramtypes
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Create a new signal <var>name</var> for use by <var>objtype</var> and return the signal
+<div class="defun">
+&mdash; Function: <b>gtk-signal-new-generic</b><var> name flags objtype rettype paramtypes<a name="index-gtk_002dsignal_002dnew_002dgeneric-245"></a></var><br>
+<blockquote><p>Create a new signal <var>name</var> for use by <var>objtype</var> and return the signal
 ID (an integer).  <var>flags</var> is <code>GtkSignalRunType</code> flags, <var>rettype</var>
 is the return type for the handler, and <var>paramtypes</var> is a list of
 parameter types for it.
 
-     <p>This function is like the C function <code>gtk_signal_newv</code>, but doesn't setup
+        <p>This function is like the C function <code>gtk_signal_newv</code>, but doesn't setup
 any particular marshaller, rather it's for use with Scheme level handlers
-which are invoked "generically" based on the type information provided.
+which are invoked &ldquo;generically&rdquo; based on the type information provided.
 
-     <p>For instance to add a new signal to <code>GtkAdjustment</code>, taking a string and
-a boolean as parameters.  Clearly Gtk itself won't use or emit something like
-this, it'd just be for an application.
+        <p>For instance the following adds a new signal to <code>GtkAdjustment</code>, taking a
+string and a boolean as parameters.  Clearly Gtk itself won't use or emit
+something like this, it'd just be for an application.
 
      <pre class="example">          (gtk-signal-new-generic "big_change_soon" '(no-recurse)
                                   'GtkAdjustment
                                   'void '(GtkString gboolean))
-          </pre>
-     </td></tr>
-</table>
-
-<br><p>
-<p>The following functions are provided by
-
-<pre class="example">     (use-modules (gtk threads))
      </pre>
+        </blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-threads-ensure-handler</b><i>
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Start a Gtk main loop in a new Guile thread, if this function has not
+<div class="defun">
+&mdash; Function: <b>gtk-radio-menu-item-new-from-widget</b><var> item<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dfrom_002dwidget-246"></a></var><br>
+&mdash; Function: <b>gtk-radio-menu-item-new-with-label-from-widget</b><var> item str<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dwith_002dlabel_002dfrom_002dwidget-247"></a></var><br>
+<blockquote><p>Create a new <code>GtkRadioMenuItem</code>, in the same radio group as the given
+<var>item</var> widget (another <code>GtkRadioMenuItem</code>).  <var>item</var> can be
+<code>#f</code> to start a new group. 
+</p></blockquote></div>
+
+   <pre class="sp">
+
+</pre>
+The following functions are provided by
+
+   <p><a name="index-Threads-248"></a><a name="index-_0028gtk-threads_0029-249"></a>
+<pre class="example">     (use-modules (gtk threads))
+</pre>
+   <div class="defun">
+&mdash; Function: <b>gtk-threads-ensure-handler</b><var><a name="index-gtk_002dthreads_002densure_002dhandler-250"></a></var><br>
+<blockquote><p>Start a Gtk main loop in a new Guile thread, if this function has not
 previously done that.  This is a convenient way for an application to ensure a
 main loop exists, but continue with other things.
 
-     <p>The main loop is started within a <code>gdk-threads-enter</code> /
+        <p>The main loop is started within a <code>gdk-threads-enter</code> /
 <code>gdk-threads-leave</code> pair in the standard way for a threaded program, as
 per the following.
 
      <pre class="example">          (gdk-threads-enter)
           (gtk-main)
           (gdk-threads-leave)
-          </pre>
-     </td></tr>
-</table>
+     </pre>
+        </blockquote></div>
 
-<p>
-<table width="100%">
-<tr>
-<td align="left"><b>gtk-threads-handler?</b><i>
-     </i></td>
-<td align="right">Function</td>
-</tr>
-</table>
-<table width="95%" align="center">
-<tr><td>
-Return true if <code>gtk-threads-ensure-handler</code> has started a Gtk main loop. 
-</td></tr>
-</table>
+<div class="defun">
+&mdash; Function: <b>gtk-threads-handler?</b><var><a name="index-gtk_002dthreads_002dhandler_003f-251"></a></var><br>
+<blockquote><p>Return true if <code>gtk-threads-ensure-handler</code> has started a Gtk main loop. 
+</p></blockquote></div>
 
    </body></html>
 
