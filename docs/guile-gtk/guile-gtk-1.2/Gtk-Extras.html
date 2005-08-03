@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Gtk Extras - Gtk Guile 0.40</title>
+<title>Gtk Extras - Gtk Guile 0.41</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
 <meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Gtk-Module.html#Gtk-Module" title="Gtk Module">
@@ -10,9 +10,9 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.40.
+version 0.41.
 
-Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -50,12 +50,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">8 Gtk Extras</h2>
 
-<p><a name="index-Gtk-module-234"></a><a name="index-Gtk-extras-235"></a>
+<p><a name="index-Gtk-module-235"></a><a name="index-Gtk-extras-236"></a>
 The following extra Gtk level functions are provided by Guile Gtk.
 
 <div class="defun">
-&mdash; Function: <b>gtk-callback-trampoline</b> [<var>tramp</var>]<var><a name="index-gtk_002dcallback_002dtrampoline-236"></a></var><br>
-<blockquote><p><a name="index-Callbacks-237"></a><a name="index-Signal-handlers-238"></a><a name="index-Error-handler-239"></a><a name="index-Trampoline-240"></a>Get or set the trampoline procedure for Gtk callbacks.  With no arguments, the
+&mdash; Function: <b>gtk-callback-trampoline</b> [<var>tramp</var>]<var><a name="index-gtk_002dcallback_002dtrampoline-237"></a></var><br>
+<blockquote><p><a name="index-Callbacks-238"></a><a name="index-Signal-handlers-239"></a><a name="index-Error-handler-240"></a><a name="index-Trampoline-241"></a>Get or set the trampoline procedure for Gtk callbacks.  With no arguments, the
 current trampoline is returned.  With an argument, the trampoline procedure is
 set, and the old procedure returned.
 
@@ -76,7 +76,7 @@ application can set a new trampoline to do this in its preferred way.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-class-new</b><var> type name<a name="index-gtk_002dclass_002dnew-241"></a></var><br>
+&mdash; Function: <b>gtk-class-new</b><var> type name<a name="index-gtk_002dclass_002dnew-242"></a></var><br>
 <blockquote><p>Return a new <code>GtkType</code> with the given <var>name</var> (a string), created as a
 sub-class of <var>type</var>.
 
@@ -107,13 +107,13 @@ holding the <code>GtkType</code> in a variable (<code>my-foo-button-type</code>)
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-list-append-item</b><var> list listitem<a name="index-gtk_002dlist_002dappend_002ditem-242"></a></var><br>
-&mdash; Function: <b>gtk-list-prepend-item</b><var> list listitem<a name="index-gtk_002dlist_002dprepend_002ditem-243"></a></var><br>
+&mdash; Function: <b>gtk-list-append-item</b><var> list listitem<a name="index-gtk_002dlist_002dappend_002ditem-243"></a></var><br>
+&mdash; Function: <b>gtk-list-prepend-item</b><var> list listitem<a name="index-gtk_002dlist_002dprepend_002ditem-244"></a></var><br>
 <blockquote><p>Append or prepend a single item to a <code>GtkList</code>. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-pixmap-new-from-file</b><var> filename parent<a name="index-gtk_002dpixmap_002dnew_002dfrom_002dfile-244"></a></var><br>
+&mdash; Function: <b>gtk-pixmap-new-from-file</b><var> filename parent<a name="index-gtk_002dpixmap_002dnew_002dfrom_002dfile-245"></a></var><br>
 <blockquote><p>Return a new <code>GtkPixmap</code> widget, containing an XPM image loaded from
 <var>filename</var> as per <code>gdk-pixmap-colormap-create-from-xpm</code>. 
 <var>parent</var> is an intended parent widget, used to get the colormap for the
@@ -121,7 +121,7 @@ image.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-signal-new-generic</b><var> name flags objtype rettype paramtypes<a name="index-gtk_002dsignal_002dnew_002dgeneric-245"></a></var><br>
+&mdash; Function: <b>gtk-signal-new-generic</b><var> name flags objtype rettype paramtypes<a name="index-gtk_002dsignal_002dnew_002dgeneric-246"></a></var><br>
 <blockquote><p>Create a new signal <var>name</var> for use by <var>objtype</var> and return the signal
 ID (an integer).  <var>flags</var> is <code>GtkSignalRunType</code> flags, <var>rettype</var>
 is the return type for the handler, and <var>paramtypes</var> is a list of
@@ -142,8 +142,8 @@ something like this, it'd just be for an application.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-radio-menu-item-new-from-widget</b><var> item<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dfrom_002dwidget-246"></a></var><br>
-&mdash; Function: <b>gtk-radio-menu-item-new-with-label-from-widget</b><var> item str<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dwith_002dlabel_002dfrom_002dwidget-247"></a></var><br>
+&mdash; Function: <b>gtk-radio-menu-item-new-from-widget</b><var> item<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dfrom_002dwidget-247"></a></var><br>
+&mdash; Function: <b>gtk-radio-menu-item-new-with-label-from-widget</b><var> item str<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dwith_002dlabel_002dfrom_002dwidget-248"></a></var><br>
 <blockquote><p>Create a new <code>GtkRadioMenuItem</code>, in the same radio group as the given
 <var>item</var> widget (another <code>GtkRadioMenuItem</code>).  <var>item</var> can be
 <code>#f</code> to start a new group. 
@@ -154,11 +154,11 @@ something like this, it'd just be for an application.
 </pre>
 The following functions are provided by
 
-   <p><a name="index-Threads-248"></a><a name="index-_0028gtk-threads_0029-249"></a>
+   <p><a name="index-Threads-249"></a><a name="index-_0028gtk-threads_0029-250"></a>
 <pre class="example">     (use-modules (gtk threads))
 </pre>
    <div class="defun">
-&mdash; Function: <b>gtk-threads-ensure-handler</b><var><a name="index-gtk_002dthreads_002densure_002dhandler-250"></a></var><br>
+&mdash; Function: <b>gtk-threads-ensure-handler</b><var><a name="index-gtk_002dthreads_002densure_002dhandler-251"></a></var><br>
 <blockquote><p>Start a Gtk main loop in a new Guile thread, if this function has not
 previously done that.  This is a convenient way for an application to ensure a
 main loop exists, but continue with other things.
@@ -174,7 +174,7 @@ per the following.
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-threads-handler?</b><var><a name="index-gtk_002dthreads_002dhandler_003f-251"></a></var><br>
+&mdash; Function: <b>gtk-threads-handler?</b><var><a name="index-gtk_002dthreads_002dhandler_003f-252"></a></var><br>
 <blockquote><p>Return true if <code>gtk-threads-ensure-handler</code> has started a Gtk main loop. 
 </p></blockquote></div>
 

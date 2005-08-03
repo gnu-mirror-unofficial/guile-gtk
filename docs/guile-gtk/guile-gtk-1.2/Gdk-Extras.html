@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Gdk Extras - Gtk Guile 0.40</title>
+<title>Gdk Extras - Gtk Guile 0.41</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
 <meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Gdk-Module.html#Gdk-Module" title="Gdk Module">
@@ -10,9 +10,9 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.40.
+version 0.41.
 
-Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -50,11 +50,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">6 Gdk Extras</h2>
 
-<p><a name="index-Gdk-module-141"></a><a name="index-Gdk-extras-142"></a>
+<p><a name="index-Gdk-module-142"></a><a name="index-Gdk-extras-143"></a>
 The following extra Gdk level functions are provided by Guile Gtk.
 
 <div class="defun">
-&mdash; Function: <b>gdk-color-intern</b><var> color<a name="index-gdk_002dcolor_002dintern-143"></a></var><br>
+&mdash; Function: <b>gdk-color-intern</b><var> color<a name="index-gdk_002dcolor_002dintern-144"></a></var><br>
 <blockquote><p>If <var>color</var> is a <code>GdkColor</code> object, return it.  If it's a string then
 parse it using <code>gdk-color-parse</code> and allocate a pixel using
 <code>gdk-color-alloc</code> in <code>gtk-widget-get-default-colormap</code>.
@@ -65,19 +65,20 @@ calling functions expecting a color.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-color-new</b><var><a name="index-gdk_002dcolor_002dnew-144"></a></var><br>
+&mdash; Function: <b>gdk-color-new</b><var><a name="index-gdk_002dcolor_002dnew-145"></a></var><br>
 <blockquote><p>Return a new <code>GdkColor</code> object, with zeros in all fields. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-event-new</b><var> type<a name="index-gdk_002devent_002dnew-145"></a></var><br>
-<blockquote><p>Return a new <code>GdkEvent</code> object of the given <code>GdkEventType</code>, and with
-other fields all set to zero.  This is a standard function in Gtk 2.0, and
-Guile Gtk makes it available under Gtk 1.2 also. 
+&mdash; Function: <b>gdk-event-new</b><var> type<a name="index-gdk_002devent_002dnew-146"></a></var><br>
+<blockquote><p>This function was previously provided by Guile Gtk, emulating the
+corresponding Gtk 2.0 function, but it has been withdrawn since it cannot be
+implemented easily and correctly in Gtk 1.2.  (<code>gdk_event_copy</code> insists
+on having a non-<code>NULL</code> window field.) 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-font-intern</b><var> font<a name="index-gdk_002dfont_002dintern-146"></a></var><br>
+&mdash; Function: <b>gdk-font-intern</b><var> font<a name="index-gdk_002dfont_002dintern-147"></a></var><br>
 <blockquote><p>If <var>font</var> is a <code>GdkFont</code> object, return it.  If it's a string then
 load that font using <code>gdk-font-load</code>, throwing an error if that function
 fails.

@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Gdk Module - Gtk Guile 0.40</title>
+<title>Gdk Module - Gtk Guile 0.41</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
 <meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="General-Conventions.html#General-Conventions" title="General Conventions">
@@ -10,9 +10,9 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.40.
+version 0.41.
 
-Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -289,30 +289,36 @@ is not wanted, <var>bitmaploc</var> can be <code>#f</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-rgb-init</b><var><a name="index-gdk_002drgb_002dinit-127"></a></var><br>
+&mdash; Function: <b>gdk-rectangle-intersect</b><var> rect1 rect2<a name="index-gdk_002drectangle_002dintersect-127"></a></var><br>
+<blockquote><p>The return is a rectangle which is the intersection of <var>rect1</var> and
+<var>rect2</var>, or <code>#f</code> for no intersection. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>gdk-rgb-init</b><var><a name="index-gdk_002drgb_002dinit-128"></a></var><br>
 <blockquote><p>There's no need to call <code>gdk-rgb-init</code> before using the GdkRgb functions,
 this is done automatically (as is the case in Gtk 2).  <code>gdk-rgb-init</code> is
 still available though, and can be used to force initialization earlier. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-set-locale</b><var><a name="index-gdk_002dset_002dlocale-128"></a></var><br>
-<blockquote><p><a name="index-Locale-129"></a><code>gdk-set-locale</code> is called automatically when the <code>(gtk-1.2 gdk)</code>
+&mdash; Function: <b>gdk-set-locale</b><var><a name="index-gdk_002dset_002dlocale-129"></a></var><br>
+<blockquote><p><a name="index-Locale-130"></a><code>gdk-set-locale</code> is called automatically when the <code>(gtk-1.2 gdk)</code>
 module is loaded, so applications don't need to do so explicitly. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-window-get-deskrelative-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002ddeskrelative_002dorigin-130"></a></var><br>
-&mdash; Function: <b>gdk-window-get-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002dorigin-131"></a></var><br>
-&mdash; Function: <b>gdk-window-get-position</b><var> window<a name="index-gdk_002dwindow_002dget_002dposition-132"></a></var><br>
-&mdash; Function: <b>gdk-window-get-root-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002droot_002dorigin-133"></a></var><br>
-&mdash; Function: <b>gdk-window-get-size</b><var> window<a name="index-gdk_002dwindow_002dget_002dsize-134"></a></var><br>
+&mdash; Function: <b>gdk-window-get-deskrelative-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002ddeskrelative_002dorigin-131"></a></var><br>
+&mdash; Function: <b>gdk-window-get-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002dorigin-132"></a></var><br>
+&mdash; Function: <b>gdk-window-get-position</b><var> window<a name="index-gdk_002dwindow_002dget_002dposition-133"></a></var><br>
+&mdash; Function: <b>gdk-window-get-root-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002droot_002dorigin-134"></a></var><br>
+&mdash; Function: <b>gdk-window-get-size</b><var> window<a name="index-gdk_002dwindow_002dget_002dsize-135"></a></var><br>
 <blockquote><p>Unlike other multiple-return values functions, these return a pair <code>(x
 . y)</code> or <code>(width . height)</code>, rather than a list. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-window-new</b><var> parent width height event-mask wclass wtype </var>[<var>#:colormap colormap</var>] [<var>#:cursor cursor</var>] [<var>#:title title</var>] [<var>#:visual visual</var>] [<var>#:wmclass name class</var>] [<var>#:x x</var>] [<var>#:y y</var>]<var><a name="index-gdk_002dwindow_002dnew-135"></a></var><br>
+&mdash; Function: <b>gdk-window-new</b><var> parent width height event-mask wclass wtype </var>[<var>#:colormap colormap</var>] [<var>#:cursor cursor</var>] [<var>#:title title</var>] [<var>#:visual visual</var>] [<var>#:wmclass name class</var>] [<var>#:x x</var>] [<var>#:y y</var>]<var><a name="index-gdk_002dwindow_002dnew-136"></a></var><br>
 <blockquote><p>The <code>GdkWindowAttr</code> structure is not used, instead mandatory fields are
 taken as fixed arguments, and the optional fields in keyword form.  For
 example, for a top-level window,
@@ -323,7 +329,7 @@ example, for a top-level window,
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-window-set-geometry-hints</b><var> window [#:aspect&nbsp;min&nbsp;max]<!-- /@w --> [#:base-size&nbsp;width&nbsp;height]<!-- /@w --> [#:max-size&nbsp;width&nbsp;height]<!-- /@w --> [#:min-size&nbsp;width&nbsp;height]<!-- /@w --> [#:pos]<!-- /@w --> [#:resize-inc&nbsp;width&nbsp;height]<!-- /@w --><a name="index-gdk_002dwindow_002dset_002dgeometry_002dhints-136"></a></var><br>
+&mdash; Function: <b>gdk-window-set-geometry-hints</b><var> window [#:aspect&nbsp;min&nbsp;max]<!-- /@w --> [#:base-size&nbsp;width&nbsp;height]<!-- /@w --> [#:max-size&nbsp;width&nbsp;height]<!-- /@w --> [#:min-size&nbsp;width&nbsp;height]<!-- /@w --> [#:pos]<!-- /@w --> [#:resize-inc&nbsp;width&nbsp;height]<!-- /@w --><a name="index-gdk_002dwindow_002dset_002dgeometry_002dhints-137"></a></var><br>
 <blockquote><p>The <code>GdkGeometry</code> structure is not used, instead optional keyword
 arguments are taken.  The keyword names correspond to the
 <code>GdkWindowHints</code> enumeration, and the arguments are the values for the
@@ -345,15 +351,15 @@ The following standard Gdk functions are not provided, for the reasons
 outlined.
 
 <div class="defun">
-&mdash; Function: <b>gdk-init</b><var><a name="index-gdk_002dinit-137"></a></var><br>
-&mdash; Function: <b>gdk-init-check</b><var><a name="index-gdk_002dinit_002dcheck-138"></a></var><br>
+&mdash; Function: <b>gdk-init</b><var><a name="index-gdk_002dinit-138"></a></var><br>
+&mdash; Function: <b>gdk-init-check</b><var><a name="index-gdk_002dinit_002dcheck-139"></a></var><br>
 <blockquote><p>There are no separate init functions to call, all initializations are done
 automatically when the <code>(gtk-1.2 gdk)</code> module is loaded. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gdk-window-get-user-data</b><var> window<a name="index-gdk_002dwindow_002dget_002duser_002ddata-139"></a></var><br>
-&mdash; Function: <b>gdk-window-set-user-data</b><var> window data<a name="index-gdk_002dwindow_002dset_002duser_002ddata-140"></a></var><br>
+&mdash; Function: <b>gdk-window-get-user-data</b><var> window<a name="index-gdk_002dwindow_002dget_002duser_002ddata-140"></a></var><br>
+&mdash; Function: <b>gdk-window-set-user-data</b><var> window data<a name="index-gdk_002dwindow_002dset_002duser_002ddata-141"></a></var><br>
 <blockquote><p>Gtk sets the &ldquo;user data&rdquo; on a window to point to the associated widget,
 using this for event dispatch.  And non-widget windows need <code>NULL</code> to
 avoid another value being treated as a widget pointer.  On this basis the user

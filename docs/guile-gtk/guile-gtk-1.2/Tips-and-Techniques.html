@@ -1,8 +1,8 @@
 <html lang="en">
 <head>
-<title>Tips and Techniques - Gtk Guile 0.40</title>
+<title>Tips and Techniques - Gtk Guile 0.41</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.40.">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
 <meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Gtk-GL-Extras.html#Gtk-GL-Extras" title="Gtk GL Extras">
@@ -10,9 +10,9 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.40.
+version 0.41.
 
-Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -50,13 +50,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">13 Tips and Techniques</h2>
 
-<p><a name="index-Tips-and-techniques-279"></a>
+<p><a name="index-Tips-and-techniques-280"></a>
      <dl>
-<dt><code>app</code><dd><a name="index-_0040code_007bapp_007d-280"></a>Don't be tempted to make a <code>(define app ...)</code> for a top-level application
+<dt><code>app</code><dd><a name="index-_0040code_007bapp_007d-281"></a>Don't be tempted to make a <code>(define app ...)</code> for a top-level application
 widget or similar.  In Guile 1.6.4 <code>app</code> is used for the implementation
 of the module system and a new binding will stop <code>use-modules</code> working.
 
-     <br><dt><code>primitive-fork</code><dd><a name="index-_0040code_007bprimitive_002dfork_007d-281"></a><a name="index-Fork-282"></a>When forking a child process, care should be taken that the child doesn't call
+     <br><dt><code>primitive-fork</code><dd><a name="index-_0040code_007bprimitive_002dfork_007d-282"></a><a name="index-Fork-283"></a>When forking a child process, care should be taken that the child doesn't call
 any Gtk functions, since the child has a <code>dup</code> of the X server connection
 and doing anything on it will upset the parent's communications, probably
 causing a crash.
@@ -79,7 +79,7 @@ exception).  Eg. an error exit,
 provided no errors are encountered in the child setups or spawning of
 <span class="file">/bin/sh</span>.
 
-     <br><dt>Multiple return values<dd><a name="index-Multiple-return-values-283"></a>When working with the Guile Gtk functions returning multiple values it can be
+     <br><dt>Multiple return values<dd><a name="index-Multiple-return-values-284"></a>When working with the Guile Gtk functions returning multiple values it can be
 convenient to get those into separate variables.  One easy way is for
 instance,
 
