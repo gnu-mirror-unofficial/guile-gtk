@@ -30,14 +30,19 @@
     </p>
 
     <p>
-     Our CVS repository can be checked out with <code>cvs -d
-     :ext:anoncvs@subversions.gnu.org:/cvsroot/guile-gtk/ co guile-gtk</code>.
-     The password is <i>anoncvs</i>. Change into the <code>guile-gtk</code>
-     directory and run <code>./autogen.sh</code> to build the code.
+     Our CVS repository can be checked out with
+
+<pre>
+cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/guile-gtk co guile-gtk-1.2
+</pre>
+     There's no password, you don't have to do a "login".  Change into the
+     <code>guile-gtk-1.2</code> directory and run <code>./autogen.sh</code> to
+     apply <code>autoconf</code> and friends to get something ready to
+     configure etc.  (You need Autoconf, Automake and Libtool.)
     </p>
 
     <p>
-    You can also view the project's CVS
+    You can also browse the project's CVS
     <a href="http://savannah.gnu.org/cgi-bin/viewcvs/guile-gtk/guile-gtk-1.2/">
     on the web.</a>
     </p>
@@ -46,7 +51,7 @@
 <p></p>
 <div class="copyright">
 <p>
-Copyright (C) 2003,2004,2005
+Copyright (C) 2003,2004,2005,2006
 Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 </p>
 
@@ -57,7 +62,7 @@ permitted in any medium, provided this notice is preserved.
 Updated:
 
 <!-- timestamp start -->
-$Date: 2005/08/03 22:58:52 $ $Author: kryde $
+$Date: 2006/05/18 00:13:47 $ $Author: kryde $
 <!-- timestamp end -->
 </p>
 </div>
