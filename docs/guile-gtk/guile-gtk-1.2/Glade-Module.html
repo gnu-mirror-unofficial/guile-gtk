@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Glade Module - Gtk Guile 0.41</title>
+<title>Glade Module - Gtk Guile 0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
-<meta name="generator" content="makeinfo 4.7">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.5.">
+<meta name="generator" content="makeinfo 4.8">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="GdkPixbuf-Module.html#GdkPixbuf-Module" title="GdkPixbuf Module">
 <link rel="next" href="Gtk-GL-Module.html#Gtk-GL-Module" title="Gtk GL Module">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.41.
+version 0.5.
 
-Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -35,25 +35,27 @@ by Free Software Foundation.-->
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc { font-variant:small-caps }
-  span.roman { font-family: serif; font-weight: normal; } 
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Glade-Module"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Gtk-GL-Module.html#Gtk-GL-Module">Gtk GL Module</a>,
+<a name="Glade-Module"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Gtk-GL-Module.html#Gtk-GL-Module">Gtk GL Module</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="GdkPixbuf-Module.html#GdkPixbuf-Module">GdkPixbuf Module</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr><br>
+<hr>
 </div>
 
 <h2 class="chapter">10 Glade Module</h2>
 
-<p><a name="index-Glade-module-261"></a>
+<p><a name="index-Glade-module-266"></a>
 The Glade interface module can be used with
 
-   <p><a name="index-_0028gtk_002d1_002e2-glade_0029-262"></a>
+   <p><a name="index-g_t_0028gtk_002d1_002e2-glade_0029-267"></a>
 <pre class="example">     (use-modules (gtk-1.2 glade))
 </pre>
    <p>A call to <code>glade_init</code> is made automatically, an application doesn't need
@@ -62,12 +64,12 @@ to do that itself.
    <p>The following rules apply to the various Glade types.
 
      <dl>
-<dt><code>GladeXML</code><dd><a name="index-GladeXML-263"></a><a name="index-XML-264"></a><code>GladeXML</code> is a sub-class of <code>GtkObject</code> so the notes concerning it
+<dt><code>GladeXML</code><dd><a name="index-GladeXML-268"></a><a name="index-XML-269"></a><code>GladeXML</code> is a sub-class of <code>GtkObject</code> so the notes concerning it
 apply (see <a href="Gtk-Module.html#Gtk-Module">Gtk Module</a>).  The following field accessors are provided,
 
      <div class="defun">
-&mdash; Function: <b>glade-xml-filename</b><var> gx<a name="index-glade_002dxml_002dfilename-265"></a></var><br>
-&mdash; Function: <b>glade-xml-txtdomain</b><var> gx<a name="index-glade_002dxml_002dtxtdomain-266"></a></var><br>
+&mdash; Function: <b>glade-xml-filename</b><var> gx<a name="index-glade_002dxml_002dfilename-270"></a></var><br>
+&mdash; Function: <b>glade-xml-txtdomain</b><var> gx<a name="index-glade_002dxml_002dtxtdomain-271"></a></var><br>
 </div>
      </dl>
 
@@ -78,14 +80,14 @@ The following standard Glade functions have particular notes for the Guile
 Gtk interface.
 
 <div class="defun">
-&mdash; Function: <b>glade-xml-new</b><var> filename </var>[<var>root</var>]<var><a name="index-glade_002dxml_002dnew-267"></a></var><br>
+&mdash; Function: <b>glade-xml-new</b><var> filename </var>[<var>root</var>]<var><a name="index-glade_002dxml_002dnew-272"></a></var><br>
 <blockquote><p>The default <var>root</var> is <code>#f</code>, meaning create the whole interface
 defined in <var>filename</var>. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>glade-xml-signal-connect-full</b><var> gladexml name </var>[<var>proc</var>]<var><a name="index-glade_002dxml_002dsignal_002dconnect_002dfull-268"></a></var><br>
-&mdash; Function: <b>glade-xml-signal-autoconnect-full</b><var> gladexml </var>[<var>proc</var>]<var><a name="index-glade_002dxml_002dsignal_002dautoconnect_002dfull-269"></a></var><br>
+&mdash; Function: <b>glade-xml-signal-connect-full</b><var> gladexml name </var>[<var>proc</var>]<var><a name="index-glade_002dxml_002dsignal_002dconnect_002dfull-273"></a></var><br>
+&mdash; Function: <b>glade-xml-signal-autoconnect-full</b><var> gladexml </var>[<var>proc</var>]<var><a name="index-glade_002dxml_002dsignal_002dautoconnect_002dfull-274"></a></var><br>
 <blockquote><p>As per the Gtk signal handlers, there's no &ldquo;user data&rdquo; parameter to
 <var>proc</var>.  <var>proc</var> is called <code>(</code><var>proc</var><code> handlername object
 signalname signaldata connectobject after?)</code>.
@@ -103,7 +105,7 @@ or it can be a <code>lambda</code> form or similar evaluating to a procedure.
 The following standard Glade functions are not provided.
 
 <div class="defun">
-&mdash; Function: <b>glade-init</b><var><a name="index-glade_002dinit-270"></a></var><br>
+&mdash; Function: <b>glade-init</b><var><a name="index-glade_002dinit-275"></a></var><br>
 <blockquote><p>There is no separate init function to call, all initializations are done
 automatically when the <code>(gtk-1.2 glade)</code> module is loaded. 
 </p></blockquote></div>

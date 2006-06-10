@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-<title>Gtk Module - Gtk Guile 0.41</title>
+<title>Gtk Module - Gtk Guile 0.5</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.41.">
-<meta name="generator" content="makeinfo 4.7">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 0.5.">
+<meta name="generator" content="makeinfo 4.8">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Gdk-Extras.html#Gdk-Extras" title="Gdk Extras">
 <link rel="next" href="Gtk-Extras.html#Gtk-Extras" title="Gtk Extras">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 0.41.
+version 0.5.
 
-Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -35,62 +35,64 @@ by Free Software Foundation.-->
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc { font-variant:small-caps }
-  span.roman { font-family: serif; font-weight: normal; } 
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Gtk-Module"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>,
+<a name="Gtk-Module"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Gdk-Extras.html#Gdk-Extras">Gdk Extras</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr><br>
+<hr>
 </div>
 
 <h2 class="chapter">7 Gtk Module</h2>
 
-<p><a name="index-Gtk-module-148"></a>
+<p><a name="index-Gtk-module-153"></a>
 The Gtk interface module can be used with
 
-   <p><a name="index-_0028gtk_002d1_002e2-gtk_0029-149"></a>
+   <p><a name="index-g_t_0028gtk_002d1_002e2-gtk_0029-154"></a>
 <pre class="example">     (use-modules (gtk-1.2 gtk))
 </pre>
-   <p><a name="index-Command-line-150"></a><a name="index-Initialization-151"></a><a name="index-Options-152"></a><a name="index-Locale-153"></a><a name="index-Internationalization-154"></a>Calls to <code>gtk_init</code> and <code>gtk_set_locale</code> are made automatically, an
+   <p><a name="index-Command-line-155"></a><a name="index-Initialization-156"></a><a name="index-Options-157"></a><a name="index-Locale-158"></a><a name="index-Internationalization-159"></a>Calls to <code>gtk_init</code> and <code>gtk_set_locale</code> are made automatically, an
 application doesn't need to make them itself.  Standard Gtk command line
-options are taken from the program command line (eg. <span class="samp">--gtk-module</span>),
+options are taken from the program command line (eg. &lsquo;<samp><span class="samp">--gtk-module</span></samp>&rsquo;),
 and removed from there, leaving other options and the rest of the command line
-for the application.  see <a href="/software/guile/docs/guile-ref/Runtime-Environment.html#Runtime-Environment">Runtime Environment (The Guile Reference Manual)</a>.
+for the application.  see <a href="/software/guile/docs/docs-1.8/guile-ref/Runtime-Environment.html">Runtime Environment</a>.
 
    <p>The following rules apply to the various Gtk types.
 
      <dl>
-<dt><code>GtkObject</code><dd><a name="index-GtkObject-155"></a><a name="index-Gtk-objects-156"></a><a name="index-Objects-157"></a><a name="index-Equality-158"></a><a name="index-Hashing-159"></a>Each <code>GtkObject</code> is represented uniquely at the Scheme level, so widgets
+<dt><code>GtkObject</code><dd><a name="index-GtkObject-160"></a><a name="index-Gtk-objects-161"></a><a name="index-Objects-162"></a><a name="index-Equality-163"></a><a name="index-Hashing-164"></a>Each <code>GtkObject</code> is represented uniquely at the Scheme level, so widgets
 etc can be compared or hashed with <code>eq?</code>.  An object will be destroyed
 when garbage collected, assuming it's not otherwise in use by Gtk.
 
-     <p><a name="index-Type-predicates-160"></a>Type predicates like <code>GTK_IS_CHECK_BUTTON</code> are implemented as for
+     <p><a name="index-Type-predicates-165"></a>Type predicates like <code>GTK_IS_CHECK_BUTTON</code> are implemented as for
 instance <code>gtk-check-button?</code>.  There are no type checking casts like in
 C, Guile Gtk functions expecting a particular object class always check they
 get it or a sub-class.
 
-     <br><dt><code>GtkAdjustment</code><dd><a name="index-GtkAdjustment-161"></a><a name="index-Adjustments-162"></a>The following field accessors and setters are provided.
+     <br><dt><code>GtkAdjustment</code><dd><a name="index-GtkAdjustment-166"></a><a name="index-Adjustments-167"></a>The following field accessors and setters are provided.
 
      <div class="defun">
-&mdash; Function: <b>gtk-adjustment-value</b><var> adj<a name="index-gtk_002dadjustment_002dvalue-163"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-lower</b><var> adj<a name="index-gtk_002dadjustment_002dlower-164"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-upper</b><var> adj<a name="index-gtk_002dadjustment_002dupper-165"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-step-increment</b><var> adj<a name="index-gtk_002dadjustment_002dstep_002dincrement-166"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-page-increment</b><var> adj<a name="index-gtk_002dadjustment_002dpage_002dincrement-167"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-page-size</b><var> adj<a name="index-gtk_002dadjustment_002dpage_002dsize-168"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-value</b><var> adj<a name="index-gtk_002dadjustment_002dvalue-168"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-lower</b><var> adj<a name="index-gtk_002dadjustment_002dlower-169"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-upper</b><var> adj<a name="index-gtk_002dadjustment_002dupper-170"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-step-increment</b><var> adj<a name="index-gtk_002dadjustment_002dstep_002dincrement-171"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-page-increment</b><var> adj<a name="index-gtk_002dadjustment_002dpage_002dincrement-172"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-page-size</b><var> adj<a name="index-gtk_002dadjustment_002dpage_002dsize-173"></a></var><br>
 </div>
 
      <div class="defun">
-&mdash; Function: <b>gtk-adjustment-set-lower</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dlower-169"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-set-upper</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dupper-170"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-set-step-increment</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dstep_002dincrement-171"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-set-page-increment</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dpage_002dincrement-172"></a></var><br>
-&mdash; Function: <b>gtk-adjustment-set-page-size</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dpage_002dsize-173"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-set-lower</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dlower-174"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-set-upper</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dupper-175"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-set-step-increment</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dstep_002dincrement-176"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-set-page-increment</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dpage_002dincrement-177"></a></var><br>
+&mdash; Function: <b>gtk-adjustment-set-page-size</b><var> adj val<a name="index-gtk_002dadjustment_002dset_002dpage_002dsize-178"></a></var><br>
 <blockquote><p>These only set the respective fields, it's up to an application to emit the
 standard <code>changed</code> signal when ready (eg. using
 <code>gtk-adjustment-changed</code>).
@@ -100,44 +102,44 @@ standard Gtk function.  It sets the value field and emits the
 <code>value_changed</code> signal. 
 </p></blockquote></div>
 
-     <br><dt><code>GtkCList</code><dd><a name="index-GtkCList-174"></a><a name="index-CList-175"></a>The following field accessors are provided.
+     <br><dt><code>GtkCList</code><dd><a name="index-GtkCList-179"></a><a name="index-CList-180"></a>The following field accessors are provided.
 
      <div class="defun">
-&mdash; Function: <b>gtk-clist-selection</b><var> clist<a name="index-gtk_002dclist_002dselection-176"></a></var><br>
+&mdash; Function: <b>gtk-clist-selection</b><var> clist<a name="index-gtk_002dclist_002dselection-181"></a></var><br>
 <blockquote><p>Return a list of integers, being the selected rows. 
 </p></blockquote></div>
 
-     <br><dt><code>GtkStyle</code><dd><a name="index-GtkStyle-177"></a><a name="index-Style-178"></a>The following field accessors are provided.
+     <br><dt><code>GtkStyle</code><dd><a name="index-GtkStyle-182"></a><a name="index-Style-183"></a>The following field accessors are provided.
 
      <!-- Note that gtk-style-get-white is not described here, gtk-style-white better -->
 <!-- matches the conventions on field accessor functions. -->
 <div class="defun">
-&mdash; Function: <b>gtk-style-white</b><var> st<a name="index-gtk_002dstyle_002dwhite-179"></a></var><br>
-&mdash; Function: <b>gtk-style-black</b><var> st<a name="index-gtk_002dstyle_002dblack-180"></a></var><br>
-&mdash; Function: <b>gtk-style-fg</b><var> st<a name="index-gtk_002dstyle_002dfg-181"></a></var><br>
-&mdash; Function: <b>gtk-style-bg</b><var> st<a name="index-gtk_002dstyle_002dbg-182"></a></var><br>
-&mdash; Function: <b>gtk-style-light</b><var> st<a name="index-gtk_002dstyle_002dlight-183"></a></var><br>
-&mdash; Function: <b>gtk-style-dark</b><var> st<a name="index-gtk_002dstyle_002ddark-184"></a></var><br>
-&mdash; Function: <b>gtk-style-mid</b><var> st<a name="index-gtk_002dstyle_002dmid-185"></a></var><br>
-&mdash; Function: <b>gtk-style-text</b><var> st<a name="index-gtk_002dstyle_002dtext-186"></a></var><br>
-&mdash; Function: <b>gtk-style-base</b><var> st<a name="index-gtk_002dstyle_002dbase-187"></a></var><br>
+&mdash; Function: <b>gtk-style-white</b><var> st<a name="index-gtk_002dstyle_002dwhite-184"></a></var><br>
+&mdash; Function: <b>gtk-style-black</b><var> st<a name="index-gtk_002dstyle_002dblack-185"></a></var><br>
+&mdash; Function: <b>gtk-style-fg</b><var> st<a name="index-gtk_002dstyle_002dfg-186"></a></var><br>
+&mdash; Function: <b>gtk-style-bg</b><var> st<a name="index-gtk_002dstyle_002dbg-187"></a></var><br>
+&mdash; Function: <b>gtk-style-light</b><var> st<a name="index-gtk_002dstyle_002dlight-188"></a></var><br>
+&mdash; Function: <b>gtk-style-dark</b><var> st<a name="index-gtk_002dstyle_002ddark-189"></a></var><br>
+&mdash; Function: <b>gtk-style-mid</b><var> st<a name="index-gtk_002dstyle_002dmid-190"></a></var><br>
+&mdash; Function: <b>gtk-style-text</b><var> st<a name="index-gtk_002dstyle_002dtext-191"></a></var><br>
+&mdash; Function: <b>gtk-style-base</b><var> st<a name="index-gtk_002dstyle_002dbase-192"></a></var><br>
 <blockquote><p>Return <code>GdkColor</code> objects. 
 </p></blockquote></div>
 
      <div class="defun">
-&mdash; Function: <b>gtk-style-white-gc</b><var> st<a name="index-gtk_002dstyle_002dwhite_002dgc-188"></a></var><br>
-&mdash; Function: <b>gtk-style-black-gc</b><var> st<a name="index-gtk_002dstyle_002dblack_002dgc-189"></a></var><br>
-&mdash; Function: <b>gtk-style-fg-gc</b><var> st<a name="index-gtk_002dstyle_002dfg_002dgc-190"></a></var><br>
-&mdash; Function: <b>gtk-style-bg-gc</b><var> st<a name="index-gtk_002dstyle_002dbg_002dgc-191"></a></var><br>
-&mdash; Function: <b>gtk-style-light-gc</b><var> st<a name="index-gtk_002dstyle_002dlight_002dgc-192"></a></var><br>
-&mdash; Function: <b>gtk-style-dark-gc</b><var> st<a name="index-gtk_002dstyle_002ddark_002dgc-193"></a></var><br>
-&mdash; Function: <b>gtk-style-mid-gc</b><var> st<a name="index-gtk_002dstyle_002dmid_002dgc-194"></a></var><br>
-&mdash; Function: <b>gtk-style-text-gc</b><var> st<a name="index-gtk_002dstyle_002dtext_002dgc-195"></a></var><br>
-&mdash; Function: <b>gtk-style-base-gc</b><var> st<a name="index-gtk_002dstyle_002dbase_002dgc-196"></a></var><br>
+&mdash; Function: <b>gtk-style-white-gc</b><var> st<a name="index-gtk_002dstyle_002dwhite_002dgc-193"></a></var><br>
+&mdash; Function: <b>gtk-style-black-gc</b><var> st<a name="index-gtk_002dstyle_002dblack_002dgc-194"></a></var><br>
+&mdash; Function: <b>gtk-style-fg-gc</b><var> st<a name="index-gtk_002dstyle_002dfg_002dgc-195"></a></var><br>
+&mdash; Function: <b>gtk-style-bg-gc</b><var> st<a name="index-gtk_002dstyle_002dbg_002dgc-196"></a></var><br>
+&mdash; Function: <b>gtk-style-light-gc</b><var> st<a name="index-gtk_002dstyle_002dlight_002dgc-197"></a></var><br>
+&mdash; Function: <b>gtk-style-dark-gc</b><var> st<a name="index-gtk_002dstyle_002ddark_002dgc-198"></a></var><br>
+&mdash; Function: <b>gtk-style-mid-gc</b><var> st<a name="index-gtk_002dstyle_002dmid_002dgc-199"></a></var><br>
+&mdash; Function: <b>gtk-style-text-gc</b><var> st<a name="index-gtk_002dstyle_002dtext_002dgc-200"></a></var><br>
+&mdash; Function: <b>gtk-style-base-gc</b><var> st<a name="index-gtk_002dstyle_002dbase_002dgc-201"></a></var><br>
 <blockquote><p>Return <code>GdkGC</code> objects. 
 </p></blockquote></div>
 
-     <br><dt><code>GtkType</code><dd><a name="index-Types-197"></a><a name="index-GtkType-198"></a><code>GtkType</code> values are represented as a distinct kind of Scheme level
+     <br><dt><code>GtkType</code><dd><a name="index-Types-202"></a><a name="index-GtkType-203"></a><code>GtkType</code> values are represented as a distinct kind of Scheme level
 objects, except for <code>GTK_TYPE_INVALID</code> which is represented as <code>#f</code>. 
 Types can be compared with <code>equal?</code>.
 
@@ -147,7 +149,7 @@ which is the name of the type, to be looked up the same way
 
      <pre class="example">          (gtk-widget-new 'GtkLabel)
      </pre>
-     <br><dt>Signals<dd><a name="index-Callbacks-199"></a><a name="index-Signals-200"></a>Signal names are strings, the same as at the C level, for instance
+     <br><dt>Signals<dd><a name="index-Callbacks-204"></a><a name="index-Signals-205"></a>Signal names are strings, the same as at the C level, for instance
 <code>"clicked"</code> or <code>"map_event"</code>.
 
      <p>Signal handler procedures are passed the same parameters as the C code
@@ -171,10 +173,10 @@ value.
      </pre>
      <p>The object and client data parameters in the C level calls are deliberately
 omitted.  Such things can be handled in a more Scheme-like and flexible way
-with a closure, ie. captured variables with desired values (see <a href="/software/guile/docs/guile-ref/About-Closure.html#About-Closure">The Concept of Closure (The Guile Reference Manual)</a>).
+with a closure, ie. captured variables with desired values (see <a href="/software/guile/docs/docs-1.8/guile-ref/About-Closure.html">The Concept of Closure</a>).
 
      <p>Signal handler calls are made via a trampoline to facilitate error handling,
-See <a href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>. 
+see <a href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>. 
 </dl>
 
    <pre class="sp">
@@ -184,13 +186,13 @@ The following standard Gtk functions have particular notes for the Guile Gtk
 interface.
 
 <div class="defun">
-&mdash; Function: <b>gtk-box-pack-start</b><var> box child </var>[<var>expand </var>[<var>fill </var>[<var>padding</var>]]]<var><a name="index-gtk_002dbox_002dpack_002dstart-201"></a></var><br>
-&mdash; Function: <b>gtk-box-pack-end</b><var> box child </var>[<var>expand </var>[<var>fill </var>[<var>padding</var>]]]<var><a name="index-gtk_002dbox_002dpack_002dend-202"></a></var><br>
+&mdash; Function: <b>gtk-box-pack-start</b><var> box child </var>[<var>expand </var>[<var>fill </var>[<var>padding</var>]]]<var><a name="index-gtk_002dbox_002dpack_002dstart-206"></a></var><br>
+&mdash; Function: <b>gtk-box-pack-end</b><var> box child </var>[<var>expand </var>[<var>fill </var>[<var>padding</var>]]]<var><a name="index-gtk_002dbox_002dpack_002dend-207"></a></var><br>
 <blockquote><p><var>expand</var> and <var>fill</var> default to <code>#f</code>, <var>padding</var> defaults to 0. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-color-selection-get-color</b><var> colorsel<a name="index-gtk_002dcolor_002dselection_002dget_002dcolor-203"></a></var><br>
+&mdash; Function: <b>gtk-color-selection-get-color</b><var> colorsel<a name="index-gtk_002dcolor_002dselection_002dget_002dcolor-208"></a></var><br>
 <blockquote><p>Return a <code>GdkColor</code> object with red, green and blue fields set to the
 current colour from <var>colorsel</var>.  The colour is not allocated in any
 colormap and the pixel field is zero.
@@ -201,7 +203,7 @@ colormap and the pixel field is zero.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-color-selection-set-color</b><var> colorsel color<a name="index-gtk_002dcolor_002dselection_002dset_002dcolor-204"></a></var><br>
+&mdash; Function: <b>gtk-color-selection-set-color</b><var> colorsel color<a name="index-gtk_002dcolor_002dselection_002dset_002dcolor-209"></a></var><br>
 <blockquote><p>Set the current colour in <var>colorsel</var> to the red, green and blue fields of
 the given <code>GdkColor</code> object.  The opacity is set to 1.0, when in use.
 
@@ -211,14 +213,14 @@ the given <code>GdkColor</code> object.  The opacity is set to 1.0, when in use.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-exit</b> [<var>exitcode</var>]<var><a name="index-gtk_002dexit-205"></a></var><br>
-<blockquote><p><a name="index-Exit-206"></a><var>exitcode</var> defaults to 0, meaning normal successful termination. 
+&mdash; Function: <b>gtk-exit</b> [<var>exitcode</var>]<var><a name="index-gtk_002dexit-210"></a></var><br>
+<blockquote><p><a name="index-Exit-211"></a><var>exitcode</var> defaults to 0, meaning normal successful termination. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-idle-add</b><var> proc<a name="index-gtk_002didle_002dadd-207"></a></var><br>
-&mdash; Function: <b>gtk-idle-add-priority</b><var> priority proc<a name="index-gtk_002didle_002dadd_002dpriority-208"></a></var><br>
-&mdash; Function: <b>gtk-idle-add-full</b><var> priority proc<a name="index-gtk_002didle_002dadd_002dfull-209"></a></var><br>
+&mdash; Function: <b>gtk-idle-add</b><var> proc<a name="index-gtk_002didle_002dadd-212"></a></var><br>
+&mdash; Function: <b>gtk-idle-add-priority</b><var> priority proc<a name="index-gtk_002didle_002dadd_002dpriority-213"></a></var><br>
+&mdash; Function: <b>gtk-idle-add-full</b><var> priority proc<a name="index-gtk_002didle_002dadd_002dfull-214"></a></var><br>
 <blockquote><p>As per the signal handlers, there's no &ldquo;data&rdquo; parameter to the idle
 callbacks.  <var>proc</var> is simply called <code>(</code><var>proc</var><code>)</code> and should return
 non-<code>#f</code> to continue being called, or <code>#f</code> to stop.
@@ -228,7 +230,7 @@ non-<code>#f</code> to continue being called, or <code>#f</code> to stop.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-input-add</b><var> port inputconds proc<a name="index-gtk_002dinput_002dadd-210"></a></var><br>
+&mdash; Function: <b>gtk-input-add</b><var> port inputconds proc<a name="index-gtk_002dinput_002dadd-215"></a></var><br>
 <blockquote><p>Register <var>proc</var> to be called when <var>inputconds</var> is satisfied on
 <var>port</var>, and return the input source ID.
 
@@ -240,10 +242,10 @@ handler, it's called as <code>(</code><var>proc</var><code> fdes conds)</code>.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-main</b><var><a name="index-gtk_002dmain-211"></a></var><br>
-&mdash; Function: <b>gtk-main-iteration</b><var><a name="index-gtk_002dmain_002diteration-212"></a></var><br>
-&mdash; Function: <b>gtk-main-iteration-do</b><var><a name="index-gtk_002dmain_002diteration_002ddo-213"></a></var><br>
-<blockquote><p><a name="index-Exceptions-214"></a><a name="index-Continuations-215"></a><a name="index-Throw-216"></a>In a signal handler or other callback, an application cannot use an exception
+&mdash; Function: <b>gtk-main</b><var><a name="index-gtk_002dmain-216"></a></var><br>
+&mdash; Function: <b>gtk-main-iteration</b><var><a name="index-gtk_002dmain_002diteration-217"></a></var><br>
+&mdash; Function: <b>gtk-main-iteration-do</b><var><a name="index-gtk_002dmain_002diteration_002ddo-218"></a></var><br>
+<blockquote><p><a name="index-Exceptions-219"></a><a name="index-Continuations-220"></a><a name="index-Throw-221"></a>In a signal handler or other callback, an application cannot use an exception
 or new continuation to escape from <code>gtk-main</code> and friends, since Gtk has
 no understanding of such things.  There are no restrictions on control flow
 within a callback, just on escaping out of it.
@@ -251,19 +253,19 @@ within a callback, just on escaping out of it.
         <p>One possibility for applications wanting such things is to have an explicit
 loop calling <code>gtk-main-iteration</code> and hold a list of pending actions to
 be taken outside that function.  This is done in the sample
-<span class="file">continuations.scm</span> (see <a href="Example-Programs.html#Example-Programs">Example Programs</a>).  The callback trampoline
+<samp><span class="file">continuations.scm</span></samp> (see <a href="Example-Programs.html#Example-Programs">Example Programs</a>).  The callback trampoline
 feature might be able to help with this (see <a href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>). 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-menu-popup</b><var> menu parentmenushell parentmenuitem button time<a name="index-gtk_002dmenu_002dpopup-217"></a></var><br>
+&mdash; Function: <b>gtk-menu-popup</b><var> menu parentmenushell parentmenuitem button time<a name="index-gtk_002dmenu_002dpopup-222"></a></var><br>
 <blockquote><p>There's no position function accepted, instead <code>NULL</code> is used, which
 means position under the current mouse position.  Perhaps this will change in
 the future. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-object-get</b><var> object prop<a name="index-gtk_002dobject_002dget-218"></a></var><br>
+&mdash; Function: <b>gtk-object-get</b><var> object prop<a name="index-gtk_002dobject_002dget-223"></a></var><br>
 <blockquote><p>Get an object property.  The <var>prop</var> property name can be either a keyword
 or symbol.  The property value is returned, or <code>#f</code> if there's no such
 property or it cannot be read.
@@ -273,10 +275,10 @@ property or it cannot be read.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-object-new</b><var> type </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dobject_002dnew-219"></a></var><br>
-&mdash; Function: <b>gtk-object-set</b><var> object </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dobject_002dset-220"></a></var><br>
-&mdash; Function: <b>gtk-widget-new</b><var> type </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dwidget_002dnew-221"></a></var><br>
-&mdash; Function: <b>gtk-widget-set</b><var> widget </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dwidget_002dset-222"></a></var><br>
+&mdash; Function: <b>gtk-object-new</b><var> type </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dobject_002dnew-224"></a></var><br>
+&mdash; Function: <b>gtk-object-set</b><var> object </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dobject_002dset-225"></a></var><br>
+&mdash; Function: <b>gtk-widget-new</b><var> type </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dwidget_002dnew-226"></a></var><br>
+&mdash; Function: <b>gtk-widget-set</b><var> widget </var>[<var>prop value</var>]<var><small class="dots">...</small><a name="index-gtk_002dwidget_002dset-227"></a></var><br>
 <blockquote><p>The <var>prop</var> property names are taken as either keywords or symbols,
 followed by suitable values.  This is in contrast to the C functions, where
 strings are used for property names.  For example,
@@ -288,7 +290,7 @@ correspond to the property type.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-object-query-args</b><var> type<a name="index-gtk_002dobject_002dquery_002dargs-223"></a></var><br>
+&mdash; Function: <b>gtk-object-query-args</b><var> type<a name="index-gtk_002dobject_002dquery_002dargs-228"></a></var><br>
 <blockquote><p>The return is a list, each element describing an argument accepted by the
 given object <var>type</var>.  If <var>type</var> is not a sub-class of <code>GtkObject</code>
 then the return is <code>#f</code>.
@@ -307,26 +309,26 @@ keywords <code>#:type</code> and <code>#:flags</code> for its <code>GtkType</cod
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-pixmap-new</b><var> pixmap </var>[<var>bitmap</var>]<var><a name="index-gtk_002dpixmap_002dnew-224"></a></var><br>
-&mdash; Function: <b>gtk-pixmap-set</b><var> pixmap </var>[<var>bitmap</var>]<var><a name="index-gtk_002dpixmap_002dset-225"></a></var><br>
+&mdash; Function: <b>gtk-pixmap-new</b><var> pixmap </var>[<var>bitmap</var>]<var><a name="index-gtk_002dpixmap_002dnew-229"></a></var><br>
+&mdash; Function: <b>gtk-pixmap-set</b><var> pixmap </var>[<var>bitmap</var>]<var><a name="index-gtk_002dpixmap_002dset-230"></a></var><br>
 <blockquote><p><var>bitmap</var> defaults to <code>#f</code>, meaning no mask. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-scrolled-window-new</b> [<var>hadjustment </var>[<var>vadjustment</var>]]<var><a name="index-gtk_002dscrolled_002dwindow_002dnew-226"></a></var><br>
+&mdash; Function: <b>gtk-scrolled-window-new</b> [<var>hadjustment </var>[<var>vadjustment</var>]]<var><a name="index-gtk_002dscrolled_002dwindow_002dnew-231"></a></var><br>
 <blockquote><p><var>hadjustment</var> and <var>vadjustment</var> default to <code>#f</code>, meaning create
 new adjustment objects. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-set-locale</b><var><a name="index-gtk_002dset_002dlocale-227"></a></var><br>
-<blockquote><p><a name="index-Locale-228"></a><code>gtk-set-locale</code> is called automatically when the <code>(gtk gtk)</code> module
+&mdash; Function: <b>gtk-set-locale</b><var><a name="index-gtk_002dset_002dlocale-232"></a></var><br>
+<blockquote><p><a name="index-Locale-233"></a><code>gtk-set-locale</code> is called automatically when the <code>(gtk gtk)</code> module
 is loaded, so applications don't need to do so explicitly. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-signal-connect</b><var> object name func </var>[<var>objectsignal </var>[<var>after</var>]]<var><a name="index-gtk_002dsignal_002dconnect-229"></a></var><br>
-<blockquote><p><a name="index-Signal-handlers-230"></a><var>objectsignal</var> has no purpose and should always be <code>#f</code>, which is its
+&mdash; Function: <b>gtk-signal-connect</b><var> object name func </var>[<var>objectsignal </var>[<var>after</var>]]<var><a name="index-gtk_002dsignal_002dconnect-234"></a></var><br>
+<blockquote><p><a name="index-Signal-handlers-235"></a><var>objectsignal</var> has no purpose and should always be <code>#f</code>, which is its
 default.  <var>after</var> defaults to <code>#f</code>, meaning <var>func</var> is called
 before <var>object</var> runs the default handler for this signal.
 
@@ -336,13 +338,13 @@ there's no access to the destroy notify callback.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-table-attach</b><var> table child left right top bottom </var>[<var>xopts </var>[<var>yopts </var>[<var>xpad </var>[<var>ypad</var>]]]]<var><a name="index-gtk_002dtable_002dattach-231"></a></var><br>
+&mdash; Function: <b>gtk-table-attach</b><var> table child left right top bottom </var>[<var>xopts </var>[<var>yopts </var>[<var>xpad </var>[<var>ypad</var>]]]]<var><a name="index-gtk_002dtable_002dattach-236"></a></var><br>
 <blockquote><p><var>xopts</var> and <var>yopts</var> each default to <code>(expand fill)</code>, <var>xpad</var>
 and <var>ypad</var> default to 0. 
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-text-insert</b><var> text font foreground background string </var>[<var>length</var>]<var><a name="index-gtk_002dtext_002dinsert-232"></a></var><br>
+&mdash; Function: <b>gtk-text-insert</b><var> text font foreground background string </var>[<var>length</var>]<var><a name="index-gtk_002dtext_002dinsert-237"></a></var><br>
 <blockquote><p>The default <var>length</var> is -1, meaning the whole <var>string</var>. 
 </p></blockquote></div>
 
@@ -352,7 +354,7 @@ and <var>ypad</var> default to 0.
 The following standard Gtk functions are not provided.
 
 <div class="defun">
-&mdash; Function: <b>gtk-container-foreach</b><var><a name="index-gtk_002dcontainer_002dforeach-233"></a></var><br>
+&mdash; Function: <b>gtk-container-foreach</b><var><a name="index-gtk_002dcontainer_002dforeach-238"></a></var><br>
 <blockquote><p>This iterator is not provided, instead the suggestion is to apply the standard
 Scheme <code>for-each</code> to the return from <code>gtk-container-children</code>. 
 That's probably how <code>gtk-container-foreach</code> would be done anyway, to make
@@ -360,7 +362,7 @@ it safe for continuations and exceptions.
 </p></blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-init</b><var><a name="index-gtk_002dinit-234"></a></var><br>
+&mdash; Function: <b>gtk-init</b><var><a name="index-gtk_002dinit-239"></a></var><br>
 <blockquote><p>There is no separate init function to call, all initializations are done
 automatically when the <code>(gtk gtk)</code> module is loaded. 
 </p></blockquote></div>
