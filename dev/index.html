@@ -26,11 +26,13 @@
      Foundation's <a href="http://savannah.gnu.org/">savannah</a> server. <a
      href="http://savannah.gnu.org/projects/guile-gtk/">Our project page</a>
      links to more information on our CVS repository and features other 
-     tools such as a bug tracker.
+     tools such as a bug tracker (which we don't use).
     </p>
 
     <p>
-     Our CVS repository can be checked out with
+     You can browse the project CVS
+     <a href="http://savannah.gnu.org/cgi-bin/viewcvs/guile-gtk/guile-gtk-1.2/">on
+     the web</a>.  Or make a checkout with
 
 <pre>
 cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/guile-gtk co guile-gtk-1.2
@@ -41,12 +43,13 @@ cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/guile-gtk co guile-gt
      configure etc.  (You need <a href="/software/autoconf">Autoconf</a>,
      <a href="/software/automake">Automake</a> and
      <a href="/software/libtool">Libtool</a>.)
-    </p>
 
     <p>
-    You can also browse the project's CVS
-    <a href="http://savannah.gnu.org/cgi-bin/viewcvs/guile-gtk/guile-gtk-1.2/">
-    on the web.</a>
+     Although the cvs module is still called <code>guile-gtk-1.2</code>, it's
+     actually the bindings for Gtk 2.  You can rename your checked-out working
+     directory to avoid confusion.  The previous Gtk 1.2 code is continuing on
+     a branch called <code>branch_gtk12</code>.
+
     </p>
    </div>
 
@@ -64,7 +67,7 @@ permitted in any medium, provided this notice is preserved.
 Updated:
 
 <!-- timestamp start -->
-$Date: 2006/06/10 23:24:23 $ $Author: kryde $
+$Date: 2006/12/22 23:49:02 $ $Author: kryde $
 <!-- timestamp end -->
 </p>
 </div>
