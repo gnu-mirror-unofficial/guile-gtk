@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>Obsolete Features - Gtk Guile</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Known-Bugs.html#Known-Bugs" title="Known Bugs">
+<link rel="next" href="Example-Programs.html#Example-Programs" title="Example Programs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version 2.0.
+
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Obsolete-Features"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Example-Programs.html#Example-Programs">Example Programs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Known-Bugs.html#Known-Bugs">Known Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">15 Obsolete Features</h2>
+
+<p><a name="index-Obsolete-features-308"></a>
+The following functions are considered obsolete and are not recommended for
+use in new programs.
+
+<div class="defun">
+&mdash; Function: <b>gtk-standalone?</b><var><a name="index-gtk_002dstandalone_003f-309"></a></var><br>
+<blockquote><p><a name="index-Standalone-main-310"></a>Return true if Guile Gtk is running as a standalone program.  This is now
+always true.
+
+        <p>In the past a <samp><span class="command">gtk-guile</span></samp> executable existed and had an option to
+indicate that an interactive read-eval-print loop should be started, in which
+case <code>gtk-standalone?</code> returned <code>#f</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>gtk-standalone-main</b><var> top-widget<a name="index-gtk_002dstandalone_002dmain-311"></a></var><br>
+<blockquote><p><a name="index-Main-loop-312"></a>When running standalone (<code>gtk-standalone?</code> true), run <code>gtk-main</code> and
+connect the <code>destroy</code> signal of <var>top-widget</var> to <code>gtk-exit</code> so
+the program will exit when that widget is destroyed.  If not standalone, do
+nothing and return immediately.
+
+        <p>Since <code>gtk-standalone?</code> is now always true, an application can just as
+easily connect the signal and run <code>gtk-main</code> itself.
+
+     <pre class="example">          (gtk-signal-connect top-widget "destroy" gtk-exit)
+          (gtk-main)
+     </pre>
+        </blockquote></div>
+
+   </body></html>
+

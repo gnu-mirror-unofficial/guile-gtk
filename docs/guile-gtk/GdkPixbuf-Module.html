@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+<title>GdkPixbuf Module - Gtk Guile</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Gtk-Extras.html#Gtk-Extras" title="Gtk Extras">
+<link rel="next" href="Glade-Module.html#Glade-Module" title="Glade Module">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version 2.0.
+
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="GdkPixbuf-Module"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Glade-Module.html#Glade-Module">Glade Module</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">9 GdkPixbuf Module</h2>
+
+<p><a name="index-GdkPixbuf-module-276"></a>
+The GdkPixbuf interface module can be used with
+
+   <p><a name="index-g_t_0028gtk_002d2_002e0-gdk_002dpixbuf_0029-277"></a>
+<pre class="example">     (use-modules (gtk-2.0 gdk-pixbuf))
+</pre>
+   <p>Currently, the <code>(gtk-2.0 gdk-pixbuf)</code> module also initializes Gtk
+(<code>gtk_init</code> etc, see <a href="Gtk-Module.html#Gtk-Module">Gtk Module</a>).  Perhaps this will change in the
+future.
+
+   <p>The following rules apply to the various GdkPixbuf types.
+
+     <dl>
+<dt>Equality<dd><a name="index-Equality-278"></a><a name="index-GdkPixbuf-279"></a><a name="index-GdkPixbufAnimation-280"></a>Currently GdkPixbuf objects (<code>GdkPixbuf</code>, <code>GdkPixbufAnimation</code>) are
+not uniquely represented by Scheme level objects, meaning they cannot be
+compared with <code>eq?</code>, and unfortunately currently <code>equal?</code> cannot be
+used either. 
+</dl>
+
+   <pre class="sp">
+
+</pre>
+The following standard GdkPixbuf functions have particular notes for the Guile
+Gtk interface.
+
+<div class="defun">
+&mdash; Function: <b>gdk-pixbuf-render-threshold-alpha</b><var> p b sx sy dx dy w h a<a name="index-gdk_002dpixbuf_002drender_002dthreshold_002dalpha-281"></a></var><br>
+&mdash; Function: <b>gdk-pixbuf-render-to-drawable</b><var> p d g sx sy dx dy w h di xd yd<a name="index-gdk_002dpixbuf_002drender_002dto_002ddrawable-282"></a></var><br>
+&mdash; Function: <b>gdk-pixbuf-render-to-drawable-alpha</b><var> p d sx sy dx dy w h am a di xd yd<a name="index-gdk_002dpixbuf_002drender_002dto_002ddrawable_002dalpha-283"></a></var><br>
+<blockquote><p><code>gdk_rgb_init</code> is called automatically, so there's no need for
+applications do that explicitly. 
+</p></blockquote></div>
+
+   <pre class="sp">
+
+</pre>
+The various Xlib specific GdkPixbuf functions (<code>gdk_pixbuf_xlib_init</code>
+etc) are not provided, since Xlib level operations are not considered a
+primary part of Guile Gtk.
+
+   </body></html>
+

@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+<title>Gdk Extras - Gtk Guile</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Gdk-Module.html#Gdk-Module" title="Gdk Module">
+<link rel="next" href="Gtk-Module.html#Gtk-Module" title="Gtk Module">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version 2.0.
+
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Gdk-Extras"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Gtk-Module.html#Gtk-Module">Gtk Module</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Gdk-Module.html#Gdk-Module">Gdk Module</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">6 Gdk Extras</h2>
+
+<p><a name="index-Gdk-module-156"></a><a name="index-Gdk-extras-157"></a>
+The following extra Gdk level functions are provided by Guile Gtk.
+
+<div class="defun">
+&mdash; Function: <b>gdk-color-intern</b><var> color<a name="index-gdk_002dcolor_002dintern-158"></a></var><br>
+<blockquote><p>If <var>color</var> is a <code>GdkColor</code> object, return it.  If it's a string then
+parse it using <code>gdk-color-parse</code> and allocate a pixel using
+<code>gdk-color-alloc</code> in <code>gtk-widget-get-default-colormap</code>.
+
+        <p>A program can use <code>gdk-color-intern</code> as an easy way to convert strings to
+<code>GdkColor</code> objects, so as to avoid repeatedly having that done when
+calling functions expecting a color. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>gdk-color-new</b><var><a name="index-gdk_002dcolor_002dnew-159"></a></var><br>
+<blockquote><p>Return a new <code>GdkColor</code> object, with zeros in all fields. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>gdk-font-intern</b><var> font<a name="index-gdk_002dfont_002dintern-160"></a></var><br>
+<blockquote><p>If <var>font</var> is a <code>GdkFont</code> object, return it.  If it's a string then
+load that font using <code>gdk-font-load</code>, throwing an error if that function
+fails.
+
+        <p>A program can use <code>gdk-font-intern</code> as an easy way to convert strings to
+<code>GdkFont</code> objects, so as to avoid repeatedly having that done when
+calling functions expecting a font. 
+</p></blockquote></div>
+
+<!-- Not sure if this should be documented, it depends on internals and -->
+<!-- will be difficult to do properly in Gtk 2. -->
+<!-- @defun gdk-window-get-id window -->
+<!-- Return the X Window ID of a @code{GdkWindow}. -->
+<!-- @end defun -->
+</body></html>
+

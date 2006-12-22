@@ -1,70 +1,100 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <title>(guile gtk): docs: guile-gtk</title>
-  <style type="text/css"><!--
-  /* bad netscape four, no stylesheet for you */
-  @import url(../../base.css);
-  --></style>
- </head>
- <body>
-  <div id="body">
-   <div id="heading">
+<html lang="en">
+<head>
+<title>Gtk Guile</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="../index.html#dir" title="(dir)">
+<link rel="prev" href="../index.html#dir" title="(dir)">
+<link rel="next" href="Introduction.html#Introduction" title="Introduction">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes how to install and use the Guile interface to Gtk,
+version 2.0.
 
-    <h1>(guile gtk)</h1>
-    <div id="menu-bar" class="reversed"><a href="../../">top</a> <a  href="../">documentation</a> <a  href="../../download/">download</a> <a  href="../../dev/">developers</a> <a  href="../../contact/">contact</a> <a  href="../../links/">links</a> </div>
+Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 
-   </div>
-   <div id="text">
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
 
-    <h2>guile-gtk-1.2 documentation</h2>
-    <p>
-    <b>Guile-Gtk User Manual:</b> <a href=guile-gtk-1.2>HTML</a>
-    </p>
-    <p>
-    The <code>guile-gtk-1.2</code> package is a continuation of the
-    original <code>guile-gtk</code> code base.  When Gtk+ 2.x appeared
-    on the scene, trying to support both Gtk+ 1.2 and the new Gtk+ 2.0
-    in one version of <code>guile-gtk</code> was not fully
-    satisfactory.
-    </p>
-    <p>
-    People wanting to have a stable but evolving platform for
-    programming with Gtk+ 1.2 in Guile Scheme often had problems that
-    were caused by the Gtk+ 2.0 support in <code>guile-gtk</code>.
-    Likewise., supporting Gtk+ 2.0 could not be done the Right Way
-    since one had to keep the legacy Gtk+ 1.2 in mind.
-    </p>
-    <p>
-    That's why the <code>guile-gtk-1.2</code> project was created.  The
-    support for Gtk+ 2.0 and Gnome can be found in the <a
-    href=../guile-gobject><code>guile-gobject</code></a> project.
-    </p>
-    <p>
-    Documentation for <code>guile-gtk-1.2</code> is available in the
-    distribution itself, and also <a href=guile-gtk-1.2/>online</a>.
-    </p>
-   </div>
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
 
-<p></p>
-<div class="copyright">
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
 <p>
-Copyright (C) 2003, 2005
-Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-</p>
-
-<p>
-Verbatim copying and distribution of this entire article is
-permitted in any medium, provided this notice is preserved.
-<br />
-Updated:
-
-<!-- timestamp start -->
-$Date: 2005/08/03 23:03:18 $ $Author: kryde $
-<!-- timestamp end -->
-</p>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Introduction.html#Introduction">Introduction</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="../index.html#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
 </div>
 
-  </div>
- </body>
-</html>
+<h2 class="unnumbered">Guile-Gtk</h2>
+
+   <p>This manual describes how to install and use the Guile interface to Gtk,
+version 2.0.
+
+   <p>Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+
+   <p>Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+   <p>Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+   <p>Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Free Software Foundation.
+   <pre class="sp">
+
+</pre>
+
+<ul class="menu">
+<li><a accesskey="1" href="Introduction.html#Introduction">Introduction</a>
+<li><a accesskey="2" href="Installing.html#Installing">Installing</a>
+<li><a accesskey="3" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>
+<li><a accesskey="4" href="General-Conventions.html#General-Conventions">General Conventions</a>
+<li><a accesskey="5" href="Gdk-Module.html#Gdk-Module">Gdk Module</a>
+<li><a accesskey="6" href="Gdk-Extras.html#Gdk-Extras">Gdk Extras</a>
+<li><a accesskey="7" href="Gtk-Module.html#Gtk-Module">Gtk Module</a>
+<li><a accesskey="8" href="Gtk-Extras.html#Gtk-Extras">Gtk Extras</a>
+<li><a accesskey="9" href="GdkPixbuf-Module.html#GdkPixbuf-Module">GdkPixbuf Module</a>
+<li><a href="Glade-Module.html#Glade-Module">Glade Module</a>
+<li><a href="Gtk-GL-Module.html#Gtk-GL-Module">Gtk GL Module</a>
+<li><a href="Gtk-GL-Extras.html#Gtk-GL-Extras">Gtk GL Extras</a>
+<li><a href="Tips-and-Techniques.html#Tips-and-Techniques">Tips and Techniques</a>
+<li><a href="Known-Bugs.html#Known-Bugs">Known Bugs</a>
+<li><a href="Obsolete-Features.html#Obsolete-Features">Obsolete Features</a>
+<li><a href="Example-Programs.html#Example-Programs">Example Programs</a>
+<li><a href="Concept-Index.html#Concept-Index">Concept Index</a>
+<li><a href="Function-and-Type-Index.html#Function-and-Type-Index">Function and Type Index</a>
+</ul>
+
+   </body></html>
+
