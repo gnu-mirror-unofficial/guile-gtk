@@ -69,7 +69,7 @@ program.
 
      <p>Gtk sets up certain <code>atexit</code> handlers to shutdown its server connection,
 and these mustn't run in the child either.  In Guile 1.8.1 and higher
-<code>primitive-_exit</code> (see <a href="/software/guile/docs/guile-ref/Processes.html#Processes">Processes</a>) can be used to exit without running those handlers.  In earlier
+<code>primitive-_exit</code> (see <a href="/software/guile/manual/html_node/Processes.html">Processes</a>) can be used to exit without running those handlers.  In earlier
 versions the suggestion is for a child to exec a do-nothing program when it
 wants to exit (either normally or for some exception).  Eg. an error exit,
 
@@ -91,7 +91,7 @@ instance,
               ...))
 </pre>
      <p>Or for instance the same with a syntax similar to <code>receive</code>
-(see <a href="/software/guile/docs/guile-ref/Multiple-Values.html#Multiple-Values">Returning and Accepting Multiple Values</a>),
+(see <a href="/software/guile/manual/html_node/Multiple-Values.html">Returning and Accepting Multiple Values</a>),
 
      <pre class="example">          (define-macro (receive-list vars expr . body)
             `(apply (lambda ,vars ,@body) ,expr))

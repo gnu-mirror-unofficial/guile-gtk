@@ -72,7 +72,7 @@ arguments for it (possibly empty).  A minimal trampoline would be,
         <p class="noindent">(which of course is just <code>apply</code> itself, no need for a new definition).
 
         <p>The default trampoline uses <code>catch</code> to trap errors from the callback, and
-displays them in a window (see <a href="/software/guile/docs/guile-ref/Catch.html#Catch">Catching Exceptions</a>).  The aim is to give the user some feedback in the
+displays them in a window (see <a href="/software/guile/manual/html_node/Catch.html">Catching Exceptions</a>).  The aim is to give the user some feedback in the
 GUI about what has gone wrong, rather than suddenly terminating.  An
 application can set a new trampoline to do this in its preferred way. 
 </p></blockquote></div>
@@ -85,7 +85,7 @@ sub-class of <var>type</var>.
         <p>Instances of the new type can be created with <code>gtk-widget-new</code> in the
 usual way.  The new type has the same size as the given <var>type</var>, there's no
 mechanism to add extra data fields.  (The suggestion would be to use Guile
-object properties for such things, See <a href="/software/guile/docs/guile-ref/Object-Properties.html#Object-Properties">Object Properties</a>.)
+object properties for such things, See <a href="/software/guile/manual/html_node/Object-Properties.html">Object Properties</a>.)
 
         <p>The main advantage of a new class is that it can be type checked in a fashion
 similar to other Gtk objects.  For instance,

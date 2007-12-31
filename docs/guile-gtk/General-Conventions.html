@@ -68,7 +68,7 @@ that.
 
      <br><dt><code>int</code>, <code>gint</code>, etc<dd><a name="index-Integers-14"></a><a name="index-gint-15"></a>All integer types are simply Guile integers.  Range checks are applied to
 parameters, and &ldquo;inexact&rdquo; values are not accepted, even if they happen to be
-integers.  (see <a href="/software/guile/docs/guile-ref/Exactness.html#Exactness">Exact and Inexact Numbers</a>)
+integers.  (see <a href="/software/guile/manual/html_node/Exactness.html">Exact and Inexact Numbers</a>)
 
      <br><dt><code>gboolean</code><dd><a name="index-Booleans-16"></a><a name="index-gboolean-17"></a>Booleans are returned as the usual Scheme <code>#t</code> and <code>#f</code>.  For
 parameters, any non-<code>#f</code> value is taken to be true.
@@ -136,7 +136,7 @@ C, Guile Gtk functions expecting a particular object class always check they
 get it or a sub-class.
 
      <br><dt><code>GError</code><dd><a name="index-g_t_0040code_007bGError_007d-36"></a><code>GError</code> parameters at the C level are implemented as <code>scm-error</code>
-style throws see <a href="/software/guile/docs/guile-ref/Error-Reporting.html#Error-Reporting">Procedures for Signaling Errors</a>.  For example <code>gdk-pixbuf-new-from-file</code>
+style throws see <a href="/software/guile/manual/html_node/Error-Reporting.html">Procedures for Signaling Errors</a>.  For example <code>gdk-pixbuf-new-from-file</code>
 (see <a href="GdkPixbuf-Module.html#GdkPixbuf-Module">GdkPixbuf Module</a>) is called as
 
      <pre class="example">          (gdk-pixbuf-new-from-file "myfile.png")

@@ -62,7 +62,7 @@ The Gdk interface module can be used with
 to do that itself.  Standard Gdk command line options are taken from the
 program command line (eg. &lsquo;<samp><span class="samp">--display</span></samp>&rsquo;), and removed from there, leaving
 other options and the rest of the command line for the application. 
-see <a href="/software/guile/docs/guile-ref/Runtime-Environment.html#Runtime-Environment">Runtime Environment</a>.
+see <a href="/software/guile/manual/html_node/Runtime-Environment.html">Runtime Environment</a>.
 
    <p>Currently, the <code>(gtk-2.0 gdk)</code> module also initializes Gtk
 (<code>gtk_init</code> etc, see <a href="Gtk-Module.html#Gtk-Module">Gtk Module</a>).  Perhaps this will change in the
@@ -186,7 +186,7 @@ the name of a font as a string, which will be loaded as per
 <code>gdk-font-intern</code> (see <a href="Gdk-Extras.html#Gdk-Extras">Gdk Extras</a>).
 
      <br><dt><code>GdkPoint</code><dd><a name="index-GdkPoint-112"></a><a name="index-Points-113"></a>A points is represented as a pair <code>(</code><var>x</var><code> . </code><var>y</var><code>)</code>. 
-(see <a href="/software/guile/docs/guile-ref/Pairs.html#Pairs">Pairs</a>)
+(see <a href="/software/guile/manual/html_node/Pairs.html">Pairs</a>)
 
      <br><dt><code>GdkRectangle</code><dd><a name="index-GdkRectangle-114"></a><a name="index-Rectangle-115"></a>A rectangles is represented as a pair of pairs <code>((</code><var>x</var><code>
 . </code><var>y</var><code>) . (</code><var>width</var><code> . </code><var>height</var><code>))</code>.  Notice the <code>(</code><var>x</var><code>
@@ -415,7 +415,7 @@ another value being treated as a widget pointer.  On this basis the user data
 generally cannot be used by applications.
 
         <p>If some sort of attached data is required then the suggestion is to use Guile
-object properties (see <a href="/software/guile/docs/guile-ref/Object-Properties.html#Object-Properties">Object Properties</a>).  Because the Scheme-level object is kept alive as long as the window
+object properties (see <a href="/software/guile/manual/html_node/Object-Properties.html">Object Properties</a>).  Because the Scheme-level object is kept alive as long as the window
 exists, such properties remain until the window is destroyed. 
 </p></blockquote></div>
 
