@@ -2,17 +2,17 @@
 <head>
 <title>Introduction - Gtk Guile</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.1.">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="index.html#Top" title="Top">
 <link rel="next" href="Installing.html#Installing" title="Installing">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 2.0.
+version 2.1.
 
-Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -53,16 +53,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <h2 class="chapter">1 Introduction</h2>
 
 <p><a name="index-Introduction-1"></a>
-Guile-Gtk makes the Gtk+, Gdk Pixbuf, Glade and Gtk GL graphical user
-interface libraries available from within Guile.  (see <a href="/software/guile/docs/docs-1.8/guile-ref/index.html">The Guile Reference Manual</a>)
+Guile-Gtk makes the Gtk+, Gdk-Pixbuf, Glade and Gtk-GL graphical user
+interface libraries available from within Guile.  (see <a href="/software/guile/docs/guile-ref/index.html#Top">The Guile Reference Manual</a>)
 
    <p>This manual makes no attempt to document those libraries, only how to use them
 from Guile.
 
    <p>Currently, Guile-Gtk supports Gtk version 2.0 and higher, and versions of
-Gdk-Pixbuf, Glade and Gtk-GL corresponding to that.  Gnome will be supported
-by a new line of development, available as Guile-Gobject on the Guile-Gtk home
-page.
+Gdk-Pixbuf, Glade and Gtk-GL corresponding to that.  It's intended that Gnome
+will be supported by a new line of development called Guile-Gnome
+(<a href="http://www.gnu.org/software/guile-gnome/">http://www.gnu.org/software/guile-gnome/</a>).
 
    <p><a name="index-Home-page-2"></a><a name="index-Web-page-3"></a><a name="index-Mailing-list-4"></a>The Guile-Gtk home page is at the following URL.  A mailing list for users and
 developers is available, see the home page for details.
@@ -71,7 +71,7 @@ developers is available, see the home page for details.
 <a href="http://www.gnu.org/software/guile-gtk">http://www.gnu.org/software/guile-gtk</a>
 </blockquote>
 
-   <p>As a taste of Guile-Gtk style, here is a hello world program.  Those familiar
+   <p>As a taste of Guile-Gtk style, here's a hello world program.  Those familiar
 with Gtk should find it straightforward.  A toplevel window is created, a
 label widget added, the result realized, and a main loop run.
 

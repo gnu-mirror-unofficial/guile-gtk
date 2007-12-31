@@ -2,17 +2,17 @@
 <head>
 <title>Gtk Extras - Gtk Guile</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.1.">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Gtk-Module.html#Gtk-Module" title="Gtk Module">
 <link rel="next" href="GdkPixbuf-Module.html#GdkPixbuf-Module" title="GdkPixbuf Module">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 2.0.
+version 2.1.
 
-Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -68,11 +68,11 @@ arguments for it (possibly empty).  A minimal trampoline would be,
 
      <pre class="example">          (define (my-trampoline proc args)
             (apply proc args))
-     </pre>
+</pre>
         <p class="noindent">(which of course is just <code>apply</code> itself, no need for a new definition).
 
         <p>The default trampoline uses <code>catch</code> to trap errors from the callback, and
-displays them in a window (see <a href="/software/guile/docs/docs-1.8/guile-ref/Catch.html">Catching Exceptions</a>).  The aim is to give the user some feedback in the
+displays them in a window (see <a href="/software/guile/docs/guile-ref/Catch.html#Catch">Catching Exceptions</a>).  The aim is to give the user some feedback in the
 GUI about what has gone wrong, rather than suddenly terminating.  An
 application can set a new trampoline to do this in its preferred way. 
 </p></blockquote></div>
@@ -84,8 +84,8 @@ sub-class of <var>type</var>.
 
         <p>Instances of the new type can be created with <code>gtk-widget-new</code> in the
 usual way.  The new type has the same size as the given <var>type</var>, there's no
-mechanism to add extra data fields.  Guile object properties can be used for
-such things (see <a href="/software/guile/docs/docs-1.8/guile-ref/Object-Properties.html">Object Properties</a>)
+mechanism to add extra data fields.  (The suggestion would be to use Guile
+object properties for such things, See <a href="/software/guile/docs/guile-ref/Object-Properties.html#Object-Properties">Object Properties</a>.)
 
         <p>The main advantage of a new class is that it can be type checked in a fashion
 similar to other Gtk objects.  For instance,
@@ -103,9 +103,9 @@ similar to other Gtk objects.  For instance,
             (or (my-foo-button? obj)
                 (error "Wrong object type: ~a" obj))
             ...)
-     </pre>
+</pre>
         <p>It also works to use <code>'MyFooButton</code> like the builtin types, instead of
-holding the <code>GtkType</code> in a variable (<code>my-foo-button-type</code>). 
+holding the type in <code>my-foo-button-type</code>. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -127,7 +127,7 @@ image.
 <blockquote><p>Create a new signal <var>name</var> for use by <var>objtype</var> and return the signal
 ID (an integer).  <var>flags</var> is <code>GtkSignalRunType</code> flags, <var>rettype</var>
 is the return type for the handler, and <var>paramtypes</var> is a list of
-parameter types for it.
+parameter types for it (<code>GType</code> values or symbols).
 
         <p>This function is like the C function <code>gtk_signal_newv</code>, but doesn't setup
 any particular marshaller, rather it's for use with Scheme level handlers
@@ -140,27 +140,19 @@ something like this, it'd just be for an application.
      <pre class="example">          (gtk-signal-new-generic "big_change_soon" '(no-recurse)
                                   'GtkAdjustment
                                   'void '(GtkString gboolean))
-     </pre>
+</pre>
         </blockquote></div>
-
-<div class="defun">
-&mdash; Function: <b>gtk-radio-menu-item-new-from-widget</b><var> item<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dfrom_002dwidget-270"></a></var><br>
-&mdash; Function: <b>gtk-radio-menu-item-new-with-label-from-widget</b><var> item str<a name="index-gtk_002dradio_002dmenu_002ditem_002dnew_002dwith_002dlabel_002dfrom_002dwidget-271"></a></var><br>
-<blockquote><p>Create a new <code>GtkRadioMenuItem</code>, in the same radio group as the given
-<var>item</var> widget (another <code>GtkRadioMenuItem</code>).  <var>item</var> can be
-<code>#f</code> to start a new group. 
-</p></blockquote></div>
 
    <pre class="sp">
 
 </pre>
 The following functions are provided by
 
-   <p><a name="index-Threads-272"></a><a name="index-g_t_0028gtk-threads_0029-273"></a>
+   <p><a name="index-Threads-270"></a><a name="index-g_t_0028gtk-threads_0029-271"></a>
 <pre class="example">     (use-modules (gtk threads))
 </pre>
    <div class="defun">
-&mdash; Function: <b>gtk-threads-ensure-handler</b><var><a name="index-gtk_002dthreads_002densure_002dhandler-274"></a></var><br>
+&mdash; Function: <b>gtk-threads-ensure-handler</b><var><a name="index-gtk_002dthreads_002densure_002dhandler-272"></a></var><br>
 <blockquote><p>Start a Gtk main loop in a new Guile thread, if this function has not
 previously done that.  This is a convenient way for an application to ensure a
 main loop exists, but continue with other things.
@@ -172,11 +164,11 @@ per the following.
      <pre class="example">          (gdk-threads-enter)
           (gtk-main)
           (gdk-threads-leave)
-     </pre>
+</pre>
         </blockquote></div>
 
 <div class="defun">
-&mdash; Function: <b>gtk-threads-handler?</b><var><a name="index-gtk_002dthreads_002dhandler_003f-275"></a></var><br>
+&mdash; Function: <b>gtk-threads-handler?</b><var><a name="index-gtk_002dthreads_002dhandler_003f-273"></a></var><br>
 <blockquote><p>Return true if <code>gtk-threads-ensure-handler</code> has started a Gtk main loop. 
 </p></blockquote></div>
 

@@ -2,17 +2,17 @@
 <head>
 <title>Gdk Module - Gtk Guile</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.1.">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="General-Conventions.html#General-Conventions" title="General Conventions">
 <link rel="next" href="Gdk-Extras.html#Gdk-Extras" title="Gdk Extras">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 2.0.
+version 2.1.
 
-Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -62,7 +62,7 @@ The Gdk interface module can be used with
 to do that itself.  Standard Gdk command line options are taken from the
 program command line (eg. &lsquo;<samp><span class="samp">--display</span></samp>&rsquo;), and removed from there, leaving
 other options and the rest of the command line for the application. 
-see <a href="/software/guile/docs/docs-1.8/guile-ref/Runtime-Environment.html">Runtime Environment</a>.
+see <a href="/software/guile/docs/guile-ref/Runtime-Environment.html#Runtime-Environment">Runtime Environment</a>.
 
    <p>Currently, the <code>(gtk-2.0 gdk)</code> module also initializes Gtk
 (<code>gtk_init</code> etc, see <a href="Gtk-Module.html#Gtk-Module">Gtk Module</a>).  Perhaps this will change in the
@@ -76,16 +76,17 @@ test only for an object of the type, so when say a string is automatically
 converted for <code>GdkFont</code>, the corresponding <code>gdk-font?</code> is false for
 a string, it's true only for an actual font object.
 
-     <br><dt>Equality<dd><a name="index-Equality-49"></a>Currently Gdk objects (such as <code>GdkWindow</code>) are not uniquely represented
-by a single Scheme level object, meaning they cannot be compared with
-<code>eq?</code>, and unfortunately currently <code>equal?</code> cannot be used either. 
-Standard Gdk functions like <code>gdk-font-equal</code> and <code>gdk-color-equal</code>
-can be used in the usual way though.
+     <br><dt>Equality<dd><a name="index-Equality-49"></a>Most Gdk objects are subtypes of <code>GObject</code> and the rules for it apply to
+them (see <a href="General-Conventions.html#General-Conventions">General Conventions</a>).  But those few not like this, such as
+<code>GdkFont</code>, are not uniquely represented by a single Scheme level object
+and so cannot be compared with <code>eq?</code> (nor with <code>equal?</code>).  Standard
+Gdk functions like <code>gdk-font-equal</code> and <code>gdk-color-equal</code> can be
+used in the usual way though.
 
      <br><dt><code>GdkAtom</code><dd><a name="index-GdkAtom-50"></a><a name="index-Atoms-51"></a>Atoms are passed and returned as Guile symbols, for example <code>WM_NAME</code>.
 
      <br><dt><code>GdkBitmap</code><dd><a name="index-GdkBitmap-52"></a><a name="index-Bitmaps-53"></a>Bitmap and pixmap objects are the same type.  When a function expects a bitmap
-Guile Gtk doesn't check the depth is 1, and generally an X level
+currently Guile-Gtk doesn't check the depth is 1, and generally an X level
 <code>BadMatch</code> error will occur if it's not.
 
      <br><dt><code>GdkColor</code><dd><a name="index-GdkColor-54"></a><a name="index-Colours-55"></a>As a convenience, functions expecting a <code>GdkColor</code> object can be passed a
@@ -103,7 +104,7 @@ string, which will be parsed and allocated in the default colormap, using
 &mdash; Function: <b>gdk-color-set-blue</b><var> color blue<a name="index-gdk_002dcolor_002dset_002dblue-61"></a></var><br>
 &mdash; Function: <b>gdk-color-set-green</b><var> color green<a name="index-gdk_002dcolor_002dset_002dgreen-62"></a></var><br>
 &mdash; Function: <b>gdk-color-set-pixel</b><var> color pixel<a name="index-gdk_002dcolor_002dset_002dpixel-63"></a></var><br>
-</div>
+          </div>
 
      <br><dt><code>GdkDragContext</code><dd><a name="index-GdkDragContext-64"></a><a name="index-Drag-context-65"></a>The following field accessors are provided,
 
@@ -116,7 +117,7 @@ string, which will be parsed and allocated in the default colormap, using
 &mdash; Function: <b>gdk-drag-context-start-time</b><var><a name="index-gdk_002ddrag_002dcontext_002dstart_002dtime-71"></a></var><br>
 &mdash; Function: <b>gdk-drag-context-suggested-action</b><var><a name="index-gdk_002ddrag_002dcontext_002dsuggested_002daction-72"></a></var><br>
 &mdash; Function: <b>gdk-drag-context-targets</b><var><a name="index-gdk_002ddrag_002dcontext_002dtargets-73"></a></var><br>
-</div>
+          </div>
 
      <br><dt><code>GdkEvent</code><dd><a name="index-GdkEvent-74"></a><a name="index-Events-75"></a>The following field accessors are provided.  Consult the Gdk documentation for
 which fields are available in which event types.
@@ -128,59 +129,72 @@ which fields are available in which event types.
 &mdash; Function: <b>gdk-event-button</b><var> e<a name="index-gdk_002devent_002dbutton-79"></a></var><br>
 &mdash; Function: <b>gdk-event-count</b><var> e<a name="index-gdk_002devent_002dcount-80"></a></var><br>
 &mdash; Function: <b>gdk-event-crossing-mode</b><var> e<a name="index-gdk_002devent_002dcrossing_002dmode-81"></a></var><br>
-&mdash; Function: <b>gdk-event-configure-x</b><var> e<a name="index-gdk_002devent_002dconfigure_002dx-82"></a></var><br>
-&mdash; Function: <b>gdk-event-configure-y</b><var> e<a name="index-gdk_002devent_002dconfigure_002dy-83"></a></var><br>
-&mdash; Function: <b>gdk-event-configure-width</b><var> e<a name="index-gdk_002devent_002dconfigure_002dwidth-84"></a></var><br>
-&mdash; Function: <b>gdk-event-configure-height</b><var> e<a name="index-gdk_002devent_002dconfigure_002dheight-85"></a></var><br>
-&mdash; Function: <b>gdk-event-drag-context</b><var> e<a name="index-gdk_002devent_002ddrag_002dcontext-86"></a></var><br>
-&mdash; Function: <b>gdk-event-focus</b><var> e<a name="index-gdk_002devent_002dfocus-87"></a></var><br>
-&mdash; Function: <b>gdk-event-in</b><var> e<a name="index-gdk_002devent_002din-88"></a></var><br>
-&mdash; Function: <b>gdk-event-is-hint</b><var> e<a name="index-gdk_002devent_002dis_002dhint-89"></a></var><br>
-&mdash; Function: <b>gdk-event-keyval</b><var> e<a name="index-gdk_002devent_002dkeyval-90"></a></var><br>
-&mdash; Function: <b>gdk-event-message</b><var> e<a name="index-gdk_002devent_002dmessage-91"></a></var><br>
-&mdash; Function: <b>gdk-event-message-type</b><var> e<a name="index-gdk_002devent_002dmessage_002dtype-92"></a></var><br>
-&mdash; Function: <b>gdk-event-notify-detail</b><var> e<a name="index-gdk_002devent_002dnotify_002ddetail-93"></a></var><br>
-&mdash; Function: <b>gdk-event-send-event</b><var> e<a name="index-gdk_002devent_002dsend_002devent-94"></a></var><br>
-&mdash; Function: <b>gdk-event-property</b><var> e<a name="index-gdk_002devent_002dproperty-95"></a></var><br>
-&mdash; Function: <b>gdk-event-requestor</b><var> e<a name="index-gdk_002devent_002drequestor-96"></a></var><br>
-&mdash; Function: <b>gdk-event-selection</b><var> e<a name="index-gdk_002devent_002dselection-97"></a></var><br>
-&mdash; Function: <b>gdk-event-source</b><var> e<a name="index-gdk_002devent_002dsource-98"></a></var><br>
-&mdash; Function: <b>gdk-event-state</b><var> e<a name="index-gdk_002devent_002dstate-99"></a></var><br>
-&mdash; Function: <b>gdk-event-string</b><var> e<a name="index-gdk_002devent_002dstring-100"></a></var><br>
-&mdash; Function: <b>gdk-event-subwindow</b><var> e<a name="index-gdk_002devent_002dsubwindow-101"></a></var><br>
-&mdash; Function: <b>gdk-event-target</b><var> e<a name="index-gdk_002devent_002dtarget-102"></a></var><br>
-&mdash; Function: <b>gdk-event-time</b><var> e<a name="index-gdk_002devent_002dtime-103"></a></var><br>
-&mdash; Function: <b>gdk-event-visibility-state</b><var> e<a name="index-gdk_002devent_002dvisibility_002dstate-104"></a></var><br>
-&mdash; Function: <b>gdk-event-window</b><var> e<a name="index-gdk_002devent_002dwindow-105"></a></var><br>
-&mdash; Function: <b>gdk-event-x</b><var> e<a name="index-gdk_002devent_002dx-106"></a></var><br>
-&mdash; Function: <b>gdk-event-y</b><var> e<a name="index-gdk_002devent_002dy-107"></a></var><br>
-&mdash; Function: <b>gdk-event-x-root</b><var> e<a name="index-gdk_002devent_002dx_002droot-108"></a></var><br>
-&mdash; Function: <b>gdk-event-y-root</b><var> e<a name="index-gdk_002devent_002dy_002droot-109"></a></var><br>
-<blockquote><p><code>gdk-event-x</code> and <code>gdk-event-y</code> returns pointer positions (floating
-point), eg. for motion notify.  <code>gdk-event-configure-x</code> and
-<code>gdk-event-configure-y</code> on the other hand return the window position
-(integers) for a configure notify.
+&mdash; Function: <b>gdk-event-drag-context</b><var> e<a name="index-gdk_002devent_002ddrag_002dcontext-82"></a></var><br>
+&mdash; Function: <b>gdk-event-focus</b><var> e<a name="index-gdk_002devent_002dfocus-83"></a></var><br>
+&mdash; Function: <b>gdk-event-in</b><var> e<a name="index-gdk_002devent_002din-84"></a></var><br>
+&mdash; Function: <b>gdk-event-is-hint</b><var> e<a name="index-gdk_002devent_002dis_002dhint-85"></a></var><br>
+&mdash; Function: <b>gdk-event-keyval</b><var> e<a name="index-gdk_002devent_002dkeyval-86"></a></var><br>
+&mdash; Function: <b>gdk-event-notify-detail</b><var> e<a name="index-gdk_002devent_002dnotify_002ddetail-87"></a></var><br>
+&mdash; Function: <b>gdk-event-send-event</b><var> e<a name="index-gdk_002devent_002dsend_002devent-88"></a></var><br>
+&mdash; Function: <b>gdk-event-property</b><var> e<a name="index-gdk_002devent_002dproperty-89"></a></var><br>
+&mdash; Function: <b>gdk-event-requestor</b><var> e<a name="index-gdk_002devent_002drequestor-90"></a></var><br>
+&mdash; Function: <b>gdk-event-selection</b><var> e<a name="index-gdk_002devent_002dselection-91"></a></var><br>
+&mdash; Function: <b>gdk-event-source</b><var> e<a name="index-gdk_002devent_002dsource-92"></a></var><br>
+&mdash; Function: <b>gdk-event-string</b><var> e<a name="index-gdk_002devent_002dstring-93"></a></var><br>
+&mdash; Function: <b>gdk-event-subwindow</b><var> e<a name="index-gdk_002devent_002dsubwindow-94"></a></var><br>
+&mdash; Function: <b>gdk-event-target</b><var> e<a name="index-gdk_002devent_002dtarget-95"></a></var><br>
+&mdash; Function: <b>gdk-event-time</b><var> e<a name="index-gdk_002devent_002dtime-96"></a></var><br>
+&mdash; Function: <b>gdk-event-window</b><var> e<a name="index-gdk_002devent_002dwindow-97"></a></var><br>
+&mdash; Function: <b>gdk-event-x-root</b><var> e<a name="index-gdk_002devent_002dx_002droot-98"></a></var><br>
+&mdash; Function: <b>gdk-event-y-root</b><var> e<a name="index-gdk_002devent_002dy_002droot-99"></a></var><br>
+          </div>
 
-             <p><code>gdk-event-state</code> returns <code>GdkModifierType</code> flags, eg. for a key
-press event.  <code>gdk-event-visibility-state</code> on the other hand returns a
-<code>GdkVisibilityState</code> for a visibility notify event.
+     <div class="defun">
+&mdash; Function: <b>gdk-event-x</b><var> e<a name="index-gdk_002devent_002dx-100"></a></var><br>
+&mdash; Function: <b>gdk-event-y</b><var> e<a name="index-gdk_002devent_002dy-101"></a></var><br>
+<blockquote> <p>Mouse pointer positions as floating point numbers, eg. for motion notify
+events. 
+</p></blockquote></div>
 
-             <p><code>gdk-event-message</code> returns its data as a vector of 5, 10 or 20 integers,
+     <div class="defun">
+&mdash; Function: <b>gdk-event-configure-x</b><var> e<a name="index-gdk_002devent_002dconfigure_002dx-102"></a></var><br>
+&mdash; Function: <b>gdk-event-configure-y</b><var> e<a name="index-gdk_002devent_002dconfigure_002dy-103"></a></var><br>
+&mdash; Function: <b>gdk-event-configure-width</b><var> e<a name="index-gdk_002devent_002dconfigure_002dwidth-104"></a></var><br>
+&mdash; Function: <b>gdk-event-configure-height</b><var> e<a name="index-gdk_002devent_002dconfigure_002dheight-105"></a></var><br>
+<blockquote> <p>Window position and sizes as exact integers, for a configure notify event. 
+</p></blockquote></div>
+
+     <div class="defun">
+&mdash; Function: <b>gdk-event-state</b><var> e<a name="index-gdk_002devent_002dstate-106"></a></var><br>
+<blockquote> <p><code>GdkModifierType</code> flags, eg. for a key press event. 
+</p></blockquote></div>
+
+     <div class="defun">
+&mdash; Function: <b>gdk-event-visibility-state</b><var> e<a name="index-gdk_002devent_002dvisibility_002dstate-107"></a></var><br>
+<blockquote> <p><code>GdkVisibilityState</code> symbol, for visibility notify events. 
+</p></blockquote></div>
+
+     <div class="defun">
+&mdash; Function: <b>gdk-event-message</b><var> e<a name="index-gdk_002devent_002dmessage-108"></a></var><br>
+&mdash; Function: <b>gdk-event-message-type</b><var> e<a name="index-gdk_002devent_002dmessage_002dtype-109"></a></var><br>
+<blockquote> <p><code>gdk-event-message</code> returns its data as a vector of 5, 10 or 20 integers,
 according to the data format (32, 16, or 8 bits, respectively). 
 </p></blockquote></div>
 
-     <br><dt><code>GdkFont</code><dd><a name="index-GdkFont-110"></a><a name="index-Fonts-111"></a>As a convenience, functions expecting a <code>GdkFont</code> object can be passed a
-string, which will be loaded as per <code>gdk-font-intern</code> (see <a href="Gdk-Extras.html#Gdk-Extras">Gdk Extras</a>).
+     <br><dt><code>GdkFont</code><dd><a name="index-GdkFont-110"></a><a name="index-Fonts-111"></a>As a convenience, functions expecting a <code>GdkFont</code> object can be passed
+the name of a font as a string, which will be loaded as per
+<code>gdk-font-intern</code> (see <a href="Gdk-Extras.html#Gdk-Extras">Gdk Extras</a>).
 
-     <br><dt><code>GdkPoint</code><dd><a name="index-GdkPoint-112"></a><a name="index-Points-113"></a>Points are represented as a pair <code>(x . y)</code>.  (see <a href="/software/guile/docs/docs-1.8/guile-ref/Pairs.html">Pairs</a>)
+     <br><dt><code>GdkPoint</code><dd><a name="index-GdkPoint-112"></a><a name="index-Points-113"></a>A points is represented as a pair <code>(</code><var>x</var><code> . </code><var>y</var><code>)</code>. 
+(see <a href="/software/guile/docs/guile-ref/Pairs.html#Pairs">Pairs</a>)
 
-     <br><dt><code>GdkRectangle</code><dd><a name="index-GdkRectangle-114"></a><a name="index-Rectangle-115"></a>Rectangles are represented as a pair of pairs <code>((x . y) . (width
-. height))</code>.  Notice that the <code>(x . y)</code> pair corresponds to the way a
-<code>GdkPoint</code> is represented.
+     <br><dt><code>GdkRectangle</code><dd><a name="index-GdkRectangle-114"></a><a name="index-Rectangle-115"></a>A rectangles is represented as a pair of pairs <code>((</code><var>x</var><code>
+. </code><var>y</var><code>) . (</code><var>width</var><code> . </code><var>height</var><code>))</code>.  Notice the <code>(</code><var>x</var><code>
+. </code><var>y</var><code>)</code> pair corresponds to the way a <code>GdkPoint</code> is represented.
 
-     <br><dt><code>GdkSegment</code><dd><a name="index-GdkSegment-116"></a><a name="index-Segment-117"></a><a name="index-Line-segment-118"></a>Segments are represented as a pair of pairs <code>((x1 . y1) . (x2 . y2))</code>. 
-Notice each <code>(x . y)</code> corresponds to the way a <code>GdkPoint</code> is
-represented.
+     <br><dt><code>GdkSegment</code><dd><a name="index-GdkSegment-116"></a><a name="index-Segment-117"></a><a name="index-Line-segment-118"></a>A segment is represented as a pair of pairs <code>((</code><var>x1</var><code>
+. </code><var>y1</var><code>) . (</code><var>x2</var><code> . </code><var>y2</var><code>))</code>.  Notice each <code>(</code><var>x</var><code>
+. </code><var>y</var><code>)</code> corresponds to the way a <code>GdkPoint</code> is represented.
 
      <br><dt><code>GdkWChar</code><dd><a name="index-GdkWChar-119"></a><a name="index-Characters-120"></a><a name="index-Wide-characters-121"></a>Currently <code>GdkWChar</code> values are represented as integers, and
 <code>GdkWChar</code> strings as vectors of integers.  So for instance
@@ -196,7 +210,7 @@ Windows from a Gtk widget should not be destroyed, that's done by the widget
 code when the widget is destroyed or unrealized.
 
      <p>Note that the final release of memory only actually takes place under the Gtk
-main loop (<code>gtk-main</code> etc), so be sure that runs (periodically at least)
+main loop (<code>gtk-main</code> etc), so be sure it runs (periodically at least)
 when creating and destroying.
 
      <br><dt>Pixels<dd><a name="index-Pixels-125"></a>Pixels are represented as integers, in the usual Gdk fashion.  Guile Gtk makes
@@ -250,18 +264,18 @@ objects are then allocated and modified as described above.
 
 <div class="defun">
 &mdash; Function: <b>gdk-gc-get-values</b><var> gc<a name="index-gdk_002dgc_002dget_002dvalues-130"></a></var><br>
-<blockquote><p><code>GdkGCValues</code> is not used, instead the return is a list,
+<blockquote><p>The <code>GdkGCValues</code> type is not used, instead the return is a list,
 
      <pre class="example">          (foreground background font function fill
            tile stipple clip-mask subwindow-mode
            ts-x-origin ts-y-origin clip-x-origin clip-y-origin
            graphics-exposures line-width line-style cap-style join-style)
-     </pre>
+</pre>
         </blockquote></div>
 
 <div class="defun">
 &mdash; Function: <b>gdk-gc-new-with-values</b><var> window [#:background&nbsp;color]<!-- /@w --> [#:cap-style&nbsp;cs]<!-- /@w --> [#:clip-mask&nbsp;pixmap]<!-- /@w --> [#:clip-x-origin&nbsp;x]<!-- /@w --> [#:clip-y-origin&nbsp;y]<!-- /@w --> [#:fill&nbsp;fill]<!-- /@w --> [#:font&nbsp;font]<!-- /@w --> [#:foreground&nbsp;color]<!-- /@w --> [#:function&nbsp;f]<!-- /@w --> [#:graphics-exposures&nbsp;bool]<!-- /@w --> [#:join-style&nbsp;js]<!-- /@w --> [#:line-style&nbsp;ls]<!-- /@w --> [#:line-width&nbsp;n]<!-- /@w --> [#:stipple&nbsp;pixmap]<!-- /@w --> [#:subwindow-mode&nbsp;swm]<!-- /@w --> [#:tile&nbsp;pixmap]<!-- /@w --> [#:ts-x-origin&nbsp;x]<!-- /@w --> [#:ts-y-origin&nbsp;y]<!-- /@w --><a name="index-gdk_002dgc_002dnew_002dwith_002dvalues-131"></a></var><br>
-<blockquote><p><code>GdkGCValues</code> is not used, instead keyword arguments are taken
+<blockquote><p>The <code>GdkGCValues</code> type is not used, instead keyword arguments are taken
 corresponding to the fields of that structure.
 
         <p>For example,
@@ -270,7 +284,7 @@ corresponding to the fields of that structure.
                                   #:foreground "orange"
                                   #:line-width 5
                                   #:graphics-exposures #f)
-     </pre>
+</pre>
         </blockquote></div>
 
 <div class="defun">
@@ -341,8 +355,9 @@ module is loaded, so applications don't need to do so explicitly.
 &mdash; Function: <b>gdk-window-get-position</b><var> window<a name="index-gdk_002dwindow_002dget_002dposition-146"></a></var><br>
 &mdash; Function: <b>gdk-window-get-root-origin</b><var> window<a name="index-gdk_002dwindow_002dget_002droot_002dorigin-147"></a></var><br>
 &mdash; Function: <b>gdk-window-get-size</b><var> window<a name="index-gdk_002dwindow_002dget_002dsize-148"></a></var><br>
-<blockquote><p>Unlike other multiple-return values functions, these return a pair <code>(x
-. y)</code> or <code>(width . height)</code>, rather than a list. 
+<blockquote><p>Unlike other multiple-return values functions, these return a pair
+<code>(</code><var>x</var><code> . </code><var>y</var><code>)</code> or <code>(</code><var>width</var><code> . </code><var>height</var><code>)</code>, rather
+than a list. 
 </p></blockquote></div>
 
 <div class="defun">
@@ -353,7 +368,7 @@ example, for a top-level window,
 
      <pre class="example">          (gdk-window-new #f 200 100 '(exposure-mask) 'input-output 'toplevel
                           #:title "my window")
-     </pre>
+</pre>
         </blockquote></div>
 
 <div class="defun">
@@ -370,7 +385,7 @@ fields of the <code>GdkGeometry</code> structure.
                                          #:aspect 1.0 2.0
                                          #:pos
                                          #:win-gravity 'south-east)
-     </pre>
+</pre>
         </blockquote></div>
 
 <div class="defun">
@@ -394,14 +409,14 @@ automatically when the <code>(gtk-2.0 gdk)</code> module is loaded.
 <div class="defun">
 &mdash; Function: <b>gdk-window-get-user-data</b><var> window<a name="index-gdk_002dwindow_002dget_002duser_002ddata-154"></a></var><br>
 &mdash; Function: <b>gdk-window-set-user-data</b><var> window data<a name="index-gdk_002dwindow_002dset_002duser_002ddata-155"></a></var><br>
-<blockquote><p>Gtk sets the &ldquo;user data&rdquo; on a window to point to the associated widget,
-using this for event dispatch.  And non-widget windows need <code>NULL</code> to
-avoid another value being treated as a widget pointer.  On this basis the user
-data generally cannot be used by applications.
+<blockquote><p>Gtk sets the &ldquo;user data&rdquo; on a window to point to the associated widget, and
+uses this for event dispatch.  Non-widget windows need <code>NULL</code> to avoid
+another value being treated as a widget pointer.  On this basis the user data
+generally cannot be used by applications.
 
-        <p>Perhaps in the future <code>GdkWindow</code> objects will be uniquely represented,
-allowing Guile object properties to do the sort of thing a user data pointer
-might. 
+        <p>If some sort of attached data is required then the suggestion is to use Guile
+object properties (see <a href="/software/guile/docs/guile-ref/Object-Properties.html#Object-Properties">Object Properties</a>).  Because the Scheme-level object is kept alive as long as the window
+exists, such properties remain until the window is destroyed. 
 </p></blockquote></div>
 
    </body></html>

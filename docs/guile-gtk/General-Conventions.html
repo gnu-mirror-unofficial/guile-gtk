@@ -2,17 +2,17 @@
 <head>
 <title>General Conventions - Gtk Guile</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.1.">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
 <link rel="next" href="Gdk-Module.html#Gdk-Module" title="Gdk Module">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 2.0.
+version 2.1.
 
-Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -68,7 +68,7 @@ that.
 
      <br><dt><code>int</code>, <code>gint</code>, etc<dd><a name="index-Integers-14"></a><a name="index-gint-15"></a>All integer types are simply Guile integers.  Range checks are applied to
 parameters, and &ldquo;inexact&rdquo; values are not accepted, even if they happen to be
-integers.  (see <a href="/software/guile/docs/docs-1.8/guile-ref/Exactness.html">Exact and Inexact Numbers</a>)
+integers.  (see <a href="/software/guile/docs/guile-ref/Exactness.html#Exactness">Exact and Inexact Numbers</a>)
 
      <br><dt><code>gboolean</code><dd><a name="index-Booleans-16"></a><a name="index-gboolean-17"></a>Booleans are returned as the usual Scheme <code>#t</code> and <code>#f</code>.  For
 parameters, any non-<code>#f</code> value is taken to be true.
@@ -105,9 +105,9 @@ returns these in a two-element list.
 stores an <code>x</code> and <code>y</code> through pointers.  These are returned from
 <code>gdk-window-at-pointer</code> in a three element list.
 
-     <br><dt>Strings<dd>Gtk generally uses strings encoded in UTF-8.  Guile (version 1.6) has no
-direct notion of multi-byte characters in strings, so applications will need
-to be careful.
+     <br><dt>Strings<dd>Gtk generally uses strings encoded in UTF-8.  Guile (versions 1.6 and 1.8) has
+no direct notion of multi-byte characters in strings, so applications will
+need to be careful.
 
      <p>Converting to <code>GdkWChar</code> with <code>gdk-mbstowc</code> (see <a href="Gdk-Module.html#Gdk-Module">Gdk Module</a>) is
 one way to identify character boundaries at least.
@@ -121,14 +121,14 @@ compared with <code>equal?</code>.
 which is the name of the type.  For example,
 
      <pre class="example">          (gtk-widget-new 'GtkLabel)
-     </pre>
+</pre>
      <p>For types known to Guile Gtk (anything appearing in the defs files), Guile Gtk
 will call the type initialization functions when necessary.  Other types will
 be available only once relevant C code has created them.
 
      <br><dt><code>GObject</code><dd><a name="index-GObject-28"></a><a name="index-GtkObject-29"></a><a name="index-Glib-objects-30"></a><a name="index-Gtk-objects-31"></a><a name="index-Objects-32"></a><a name="index-Equality-33"></a><a name="index-Hashing-34"></a>Each <code>GObject</code> is represented uniquely at the Scheme level, so widgets
-etc can be compared or hashed with <code>eq?</code>.  An object will be destroyed
-when garbage collected, assuming it's not otherwise in use by Gtk.
+etc can be compared or hashed with <code>eq?</code>.  An object is destroyed when
+garbage collected, if it's not otherwise in use by Gtk.
 
      <p><a name="index-Type-predicates-35"></a>Type predicates like <code>GTK_IS_CHECK_BUTTON</code> are implemented as for
 instance <code>gtk-check-button?</code>.  There are no type checking casts like in
@@ -136,17 +136,17 @@ C, Guile Gtk functions expecting a particular object class always check they
 get it or a sub-class.
 
      <br><dt><code>GError</code><dd><a name="index-g_t_0040code_007bGError_007d-36"></a><code>GError</code> parameters at the C level are implemented as <code>scm-error</code>
-style throws see <a href="/software/guile/docs/docs-1.8/guile-ref/Error-Reporting.html">Procedures for Signaling Errors</a>.  For example <code>gdk-pixbuf-new-from-file</code>
+style throws see <a href="/software/guile/docs/guile-ref/Error-Reporting.html#Error-Reporting">Procedures for Signaling Errors</a>.  For example <code>gdk-pixbuf-new-from-file</code>
 (see <a href="GdkPixbuf-Module.html#GdkPixbuf-Module">GdkPixbuf Module</a>) is called as
 
      <pre class="example">          (gdk-pixbuf-new-from-file "myfile.png")
-     </pre>
+</pre>
      <p class="noindent">and if an error occurs it may throw for instance
 
      <pre class="example">          (scm-error 'g-error "gdk-pixbuf-new-from-file"
                      "Failed to open file 'myfile.png': No such file or directory"
                      '(g-file-error-quark 4))
-     </pre>
+</pre>
      <p>The data parameter is a list of error domain and code number.
 
      <br><dt>Threading<dd><a name="index-Threading-37"></a><a name="index-gdk_002dthreads_002denter-38"></a><a name="index-gdk_002dthreads_002dleave-39"></a>Guile Gtk programs can use Guile threads in the normal way, but note that the

@@ -2,17 +2,17 @@
 <head>
 <title>Installing - Gtk Guile</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.0.">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="description" content="How to install and use the Guile interface to Gtk, version 2.1.">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Introduction.html#Introduction" title="Introduction">
 <link rel="next" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual describes how to install and use the Guile interface to Gtk,
-version 2.0.
+version 2.1.
 
-Copyright (C) 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -55,8 +55,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <p><a name="index-Installing-6"></a>
 To build and install Guile-Gtk you will need Guile 1.6.4 or higher, and Glib
 and Gtk versions 2.0 or higher (and their various dependencies).  Gdk-Pixbuf,
-Glade and Gtk-GL are optional, support for them will be included if they're
-available.
+Glade and Gtk-GL are optional, support for them in Guile-Gtk is included if
+they're available.
 
    <p><a name="index-Configure-7"></a>Guile-Gtk uses an Autoconf, Automake and Libtool based configuration system. 
 A basic build can be made with,
@@ -76,16 +76,26 @@ A basic build can be made with,
 Running &lsquo;<samp><span class="samp">./configure --help</span></samp>&rsquo; will print a summary of the usage and
 options.
 
-   <p>Installing under the same <samp><span class="option">--prefix</span></samp> as Guile will make Guile Gtk
+     <dl>
+<dt><samp><span class="option">--with-gdk-pixbuf=yes/no</span></samp><dt><samp><span class="option">--with-glade=yes/no</span></samp><dt><samp><span class="option">--with-gtkgl=yes/no</span></samp><dd>Enable or disable Gdk-Pixbuf, Glade, or Gtk-GL support, respectively.  The
+default for each is to enable if available.
+
+     <br><dt><samp><span class="option">--prefix</span></samp><dd>Installing under the same <samp><span class="option">--prefix</span></samp> as Guile will make Guile-Gtk
 available immediately.  If installed under a different tree it will be
 necessary to add to <code>%load-path</code> and possibly <code>LTDL_LIBRARY_PATH</code> so
 the modules and interface libraries can be found.
 
-   <p>The following Guile-Gtk specific options are available.
+     <br><dt>Threads<dd>The threads method (pthreads, coop, or none) used in Guile is noticed by
+Guile-Gtk at compile-time, and used to setup the threads support within
+Guile-Gtk (see <a href="General-Conventions.html#General-Conventions">General Conventions</a>).  The resulting Guile-Gtk can only be
+used with a Guile built with the same threads method.
 
-     <dl>
-<dt><samp><span class="option">--with-gdk-pixbuf=yes/no</span></samp><dt><samp><span class="option">--with-glade=yes/no</span></samp><dt><samp><span class="option">--with-gtkgl=yes/no</span></samp><dd>Enable or disable Gdk-Pixbuf, Glade, or Gtk-GL support, respectively.  The
-default for each is to enable if available. 
+     <p>For Guile 1.8, where the choices are pthreads or no threads, the intention is
+instead to notice that choice at runtime (because Glib always has pthreads
+builtin anyway).  But as of Guile 1.8.2 certain threads-dependent code is
+inlined by Guile, so runtime detection doesn't yet work. 
+<!-- SCM_FREELIST_LOC() in the inlined scm_cell() is the offending bit. -->
+<!-- Hopefully to be fixed before long. -->
 </dl>
 
    </body></html>
