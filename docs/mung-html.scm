@@ -1,6 +1,6 @@
 ;; Guile Gtk html online manual href link munging.
 ;;
-;; Copyright 2005, 2006 Free Software Foundation
+;; Copyright 2005, 2006, 2007 Free Software Foundation
 
 
 ;; Usage: guile -s mung-html.scm filename.html ...
@@ -14,7 +14,7 @@
 ;;
 ;; but it needs to become
 ;;
-;;     href="/software/guile/docs/docs-1.8/guile-ref/Foo.html"
+;;     href="/software/guile/manual/html_node/Foo.html"
 ;;
 ;; This program is only meant for use after a makeinfo run, so if you make a
 ;; change to fix some of the munging here then you need to start from
@@ -79,15 +79,16 @@
 
 
      ;; guile
-     ;; http://www.gnu.org/software/guile/docs/docs-1.8/guile-ref/index.html
+     ;; http://www.gnu.org/software/guile/manual/
+     ;; http://www.gnu.org/software/guile/manual/html_node/index.html
      (set! body
 	   (string-substitute/global
      	    body "href=\"../guile/index.html#Top"
-     	    "href=\"/software/guile/docs/docs-1.8/guile-ref/index.html"))
+     	    "href=\"/software/guile/manual/"))
      (set! body
      	   (string-regexp-substitute/global
      	    body "href=\"[.][.]/guile/([^.]+[.]html)#[^\"]+"
-	    "href=\"/software/guile/docs/docs-1.8/guile-ref/" 1))
+	    "href=\"/software/guile/manual/html_node/" 1))
 
 
 
